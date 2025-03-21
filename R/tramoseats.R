@@ -62,7 +62,7 @@ tramo <- function(ts,
         return(NULL)
     } else {
         res <- .tramo_output(jrslt)
-        return(.add_ud_var(res, jrslt, userdefined = userdefined))
+        return(rjd3toolkit::.add_ud_var(res, jrslt, userdefined = userdefined))
     }
 }
 
@@ -90,7 +90,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
         return(NULL)
     } else {
         res <- .regarima_rslts(jrslt)
-        return(.add_ud_var(res, jrslt, userdefined = userdefined, result = TRUE))
+        return(rjd3toolkit::.add_ud_var(res, jrslt, userdefined = userdefined, result = TRUE))
     }
 }
 
@@ -99,8 +99,8 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
     if (is.jnull(jq)) {
         return(NULL)
     }
-    q <- .jcall("jdplus/tramoseats/base/r/Tramo", "[B", "toBuffer", jq)
-    p <- RProtoBuf::read(tramoseats.TramoOutput, q)
+    q_obj <- .jcall("jdplus/tramoseats/base/r/Tramo", "[B", "toBuffer", jq)
+    p <- RProtoBuf::read(tramoseats.TramoOutput, q_obj)
     return(structure(
         list(
             result = rjd3toolkit::.p2r_regarima_rslts(p$result),
@@ -168,7 +168,7 @@ tramoseats <- function(ts,
         return(NULL)
     } else {
         res <- .tramoseats_output(jrslt)
-        return(.add_ud_var(res, jrslt, userdefined = userdefined))
+        return(rjd3toolkit::.add_ud_var(res, jrslt, userdefined = userdefined))
     }
 }
 
@@ -195,7 +195,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
         return(NULL)
     } else {
         res <- .tramoseats_rslts(jrslt)
-        return(.add_ud_var(res, jrslt, userdefined = userdefined, result = TRUE))
+        return(rjd3toolkit::.add_ud_var(res, jrslt, userdefined = userdefined, result = TRUE))
     }
 }
 
@@ -230,8 +230,8 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
     if (is.jnull(jq)) {
         return(NULL)
     }
-    q <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[B", "toBuffer", jq)
-    p <- RProtoBuf::read(tramoseats.TramoSeatsOutput, q)
+    q_obj <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[B", "toBuffer", jq)
+    p <- RProtoBuf::read(tramoseats.TramoSeatsOutput, q_obj)
     return(structure(
         list(
             result = .p2r_tramoseats_rslts(p$result),
@@ -503,7 +503,9 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #' Forecasts with TRAMO
 #'
 #' @inheritParams tramo
-#' @param nf the forecasting horizon (`numeric`). The forecast length is in periods (positive values) or years (negative values). By default, the program generates a one-year forecast (`nf = -1`).
+#' @param nf the forecasting horizon (`numeric`). The forecast length is in
+#' periods (positive values) or years (negative values). By default, the program
+#' generates a one-year forecast (`nf = -1`).
 #'
 #' @return a `mts` object with 7 variables:
 #' - `forecast` the forecast of the actual data at the end of the series.
@@ -564,9 +566,9 @@ tramoseats_dictionary <- function() {
 #'
 #' @examples
 tramoseats_full_dictionary <- function() {
-    q <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "fullDictionary")
-    q <- `dim<-`(q, c(6, length(q) / 6))
-    q <- t(q)
-    q <- `colnames<-`(q, c("name", "description", "detail", "output", "type", "fullname"))
-    return(q)
+    dico <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "fullDictionary")
+    dico <- `dim<-`(dico, c(6, length(dico) / 6))
+    dico <- t(dico)
+    dico <- `colnames<-`(dico, c("name", "description", "detail", "output", "type", "fullname"))
+    return(dico)
 }

@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed
+
+* `.add_ud_var` has been transfered to {rjd3toolkit}
+
+
 ## [3.3.0] - 2024-10-28
 
 ### Changed
