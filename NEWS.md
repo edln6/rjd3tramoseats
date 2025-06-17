@@ -9,6 +9,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.5.2] - 2025-06-17
 
+### Changed
+
 * New JARS
 * Update pkgdown appearance
 
