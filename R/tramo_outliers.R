@@ -20,7 +20,7 @@ NULL
 #'
 #' @return a `"JD3_REGARIMA_OUTLIERS"` object.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)
 #' @export
 tramo_outliers <- function(y, order = c(0L, 1L, 1L), seasonal = c(0L, 1L, 1L), mean = FALSE,

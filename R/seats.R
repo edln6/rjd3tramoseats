@@ -8,7 +8,7 @@ NULL
 #' @inheritParams set_seats
 #'
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 #' @export
 seats_decompose <- function(sarima, seas.tolerance = 2, trend.boundary = 0.5, seas.boundary = 0.8,

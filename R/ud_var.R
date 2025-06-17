@@ -10,7 +10,7 @@
 #'
 #' @param x a character to indicate the estimation function for which the output items list will be displayed.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' userdefined_variables_tramoseats("tramoseats")
 #' userdefined_variables_tramoseats("tramo")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M

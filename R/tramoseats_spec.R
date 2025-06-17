@@ -12,7 +12,7 @@ NULL
 #'
 #' @param name the name of a predefined specification.
 #'
-#' @examples
+#' @examplesIf jversion >= 17
 #' init_spec <- tramoseats_spec()
 #' init_spec <- tramo_spec()
 #' init_spec <- tramoseats_spec("rsa3")

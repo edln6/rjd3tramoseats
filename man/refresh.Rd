@@ -94,6 +94,7 @@ Arima model coefficients are re-estimated
 orders (p,d,q)(P,D,Q) can also be re-identified.
 }
 \examples{
+\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 y <- rjd3toolkit::ABS$X0.2.08.10.M
 # raw series for first estimation
 y_raw <- window(y, end = c(2016, 12))
@@ -135,7 +136,7 @@ spec_tramoseats_ref <- tramoseats_refresh(current_result_spec,
 # as Additive Outliers, the previous reg-Arima model being otherwise kept fixed
 # 2nd estimation with refreshed specification
 sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref) #'
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 More information on revision policies in JDemetra+ online documentation:
