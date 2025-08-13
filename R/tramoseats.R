@@ -559,7 +559,9 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 #'
 #' @export
 tramoseats_dictionary <- function() {
-    return(.jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "dictionary"))
+    output <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "dictionary")
+    class(output) <- "JD3_DICTIONARY"
+    return(output)
 }
 
 #' TRAMO-SEATS full dictionary
@@ -571,5 +573,7 @@ tramoseats_full_dictionary <- function() {
     dico <- `dim<-`(dico, c(6, length(dico) / 6))
     dico <- t(dico)
     dico <- `colnames<-`(dico, c("name", "description", "detail", "output", "type", "fullname"))
+    dico <- as.data.frame(dico)
+    class(dico) <- c("JD3_FULL_DICTIONARY", "data.frame")
     return(dico)
 }
