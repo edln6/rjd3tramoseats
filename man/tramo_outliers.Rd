@@ -48,7 +48,7 @@ a \code{"JD3_REGARIMA_OUTLIERS"} object.
 Tramo is a particular regarima model estimation algorithm, mainly used to linearized the series before performing a decomposition with Seats
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)
 \dontshow{\}) # examplesIf}
 }

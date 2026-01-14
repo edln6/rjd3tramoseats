@@ -40,7 +40,7 @@ the results.
 TRAMO model, pre-adjustment in TRAMO-SEATS
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
 y <- rjd3toolkit::ABS$X0.2.09.10.M
 sp <- tramo_spec("trfull")

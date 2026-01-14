@@ -16,7 +16,7 @@ NULL
 #' specification, while `tramo_fast()` is a faster function that only returns
 #' the results.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' library("rjd3toolkit")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' sp <- tramo_spec("trfull")
@@ -116,7 +116,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #' @inheritParams tramo
 #'
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' library("rjd3toolkit")
 #' sp <- tramoseats_spec("rsafull")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -313,7 +313,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' More information on revision policies in JDemetra+ online documentation:
 #' \url{https://jdemetra-new-documentation.netlify.app/t-rev-policies-production}
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' y <- rjd3toolkit::ABS$X0.2.08.10.M
 #' # raw series for first estimation
 #' y_raw <- window(y, end = c(2016, 12))
@@ -469,7 +469,7 @@ forecast_names <- c("forecast", "error", "fraw", "efraw")
 #' - `fraw` the forecast of the transformed series.
 #' - `efraw` the absolute errors of the transformed series.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
 #' @export
 terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"), nback = 1, context = NULL) {
@@ -517,7 +517,7 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #'
 #' - `fraw` the forecast of the transformed series.
 #' - `efraw` the standard deviation of the forecast of the transformed series.
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
 #' @export
 tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"), nf = -1, context = NULL) {

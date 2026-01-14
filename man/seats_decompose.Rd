@@ -58,7 +58,7 @@ non-admissible model estimated by TRAMO. Default="Legacy".}
 SEATS Decomposition
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 \dontshow{\}) # examplesIf}
 }
