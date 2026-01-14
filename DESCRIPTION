@@ -15,7 +15,7 @@ Description: R Interface to 'JDemetra+ 3.x'
     Regression with ARIMA noise, Missing values and Outliers - Signal
     Extraction in ARIMA Time Series), including TRAMO modelling (automatic
     ARIMA model with outlier detection and trading days adjustment).
-License: file LICENSE
+License: EUPL
 URL: https://github.com/rjdverse/rjd3tramoseats,
     https://rjdverse.github.io/rjd3tramoseats/
 BugReports: https://github.com/rjdverse/rjd3tramoseats/issues
