@@ -7,8 +7,29 @@
 tramoseats_full_dictionary()
 }
 \value{
-A matrix with a complete description of the available output objects
+returns a data frame containing format and description, for all output objects (series, diagnostics, parameters) available with \code{tramoseats()}function
 }
 \description{
-TRAMO-SEATS full dictionary
+Function listing the format and description for all output objects (series, diagnostics, parameters) available with \code{tramoseats()} function.
+Can be used to generate an output non available by default with userdefined option in \code{tramoseats()}function (see examples).
+}
+\examples{
+\dontshow{if (jversion >= 17) withAutoprint(\{ # examplesIf}
+# visualize the dictionary
+# first 10 lines
+tramoseats_full_dictionary()[1:10,]
+# for more structured information call `View(tramoseats_full_dictionary())`
+# extract names of output of interest
+user_defined_output <- tramoseats_full_dictionary()[95,1]
+user_defined_output
+# generate the corresponding output in an estimation
+library(rjd3toolkit)
+y <- rjd3toolkit::ABS$X0.2.09.10.M
+m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
+# retrieve user defined output
+tail(m$user_defined$ylin)
+\dontshow{\}) # examplesIf}
+}
+\seealso{
+\code{tramoseats_dictionary} for an abbreviated version of the output description
 }

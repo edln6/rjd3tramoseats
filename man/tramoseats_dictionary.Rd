@@ -7,8 +7,27 @@
 tramoseats_dictionary()
 }
 \value{
-A vector containing the names of all the available output objects (series, diagnostics, parameters).
+returns a vector containing the names of all output objects (series, diagnostics, parameters) available with \code{tramoseats( )} function.
 }
 \description{
-TRAMO-SEATS Dictionary
+Function providing the names all output objects (series, diagnostics, parameters) available with \code{tramoseats( )} function.
+Can be used to generate an output non available by default with userdefined option in \code{tramoseats( )}function (see examples).
+}
+\examples{
+\dontshow{if (jversion >= 17) withAutoprint(\{ # examplesIf}
+# visualize the list of names
+summary(tramoseats_dictionary())
+# set up vector with names of output objects of interest
+user_defined_output <- c("ylin", "residuals.kurtosis")
+# generate the corresponding output in an estimation
+library(rjd3toolkit)
+y <- rjd3toolkit::ABS$X0.2.09.10.M
+m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
+# retrieve user defined output
+tail(m$user_defined$ylin)
+m$user_defined$residuals.kurtosis
+\dontshow{\}) # examplesIf}
+}
+\seealso{
+\code{tramoseats_full_dictionary} for a detailed version of the output description
 }

@@ -26,3 +26,10 @@ spec_tramo <- function(name = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
     .Deprecated("tramo_spec")
     tramo_spec(name)
 }
+
+#' @name deprecated-rjd3tramoseats
+#' @export
+userdefined_variables_tramoseats <- function(x = c("TRAMO-SEATS", "TRAMO"))  {
+    .Deprecated("tramoseats_dictionary")
+    x13_dictionary
+}
