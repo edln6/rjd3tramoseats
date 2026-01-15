@@ -4,6 +4,10 @@ NULL
 
 #' @title TRAMO model, pre-adjustment in TRAMO-SEATS
 #'
+#' @description allows to model the series with a Reg-Arima model, estimate outlier,
+#' calendar or other regression effects and produce forecasts
+#'
+#'
 #' @param ts a univariate time series.
 #' @param spec the model specification. Can be either the name of a predefined
 #' specification or a user-defined specification.
