@@ -21,6 +21,7 @@ NULL
 #' the results.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' library("rjd3toolkit")
 #'
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -39,6 +40,7 @@ NULL
 #' tramo_fast(y, spec = sp)
 #' sp <- set_outlier(sp, outliers.type = c("AO"))
 #' tramo_fast(y, spec = sp)
+#' }
 #'
 #' @export
 #'
@@ -128,6 +130,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #' variables and [rjd3toolkit::result()] to get a specific variable).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' library("rjd3toolkit")
 #'
 #' sp <- tramoseats_spec("rsafull")
@@ -144,6 +147,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #'     fun = "None"
 #' )
 #' tramoseats_fast(y, spec = sp)
+#' }
 #'
 #' @export
 tramoseats <- function(ts,
@@ -321,6 +325,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' \url{https://jdemetra-new-documentation.netlify.app/a-rev-policies}
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' y <- rjd3toolkit::ABS$X0.2.08.10.M
 #' # raw series for first estimation
 #' y_raw <- window(y, end = c(2016, 12))
@@ -378,7 +383,8 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #'                               policy = "Fixed"
 #'                                )
 #' # 2nd estimation with refreshed specification
-#'tramo_model_ref <- tramo(y_new, spec_1_ref)
+#' tramo_model_ref <- tramo(y_new, spec_1_ref)
+#' }
 #'
 #' @name refresh
 #' @rdname refresh
@@ -580,28 +586,51 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
     }
 }
 
-#' @title TRAMO-SEATS Dictionary
+
+#' @title TRAMO-SEATS dictionary
 #'
 #' @description
-#' Function providing the names all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
-#' Can be used to generate an output non available by default with userdefined option in `tramoseats( )`function (see examples).
+#' Functions to provide information for all output objects (series, diagnostics,
+#' parameters) available with `tramoseats()` function.
 #'
-#' @returns returns a vector containing the names of all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
+#' @returns \code{tramoseats_dictionary()} returns a character vector containing the
+#' names of all output objects (series, diagnostics, parameters) available with
+#' the `tramoseats()` function, whereas \code{tramoseats_full_dictionary()} returns a
+#' \code{data.frame} with format and description, for all the output objects.
+#'
+#' @name tramoseats_dictionary
+#'
+#' @details
+#' These functions provide lists of output names (series, diagnostics,
+#' parameters) available with the \code{tramoseats()} function. These names can be
+#' used to generate customized outputs with the userdefined option of the
+#' \code{tramoseats()} function (see examples).
+#' The \code{tramoseats_full_dictionary} function provides additional information on
+#' object format and description.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' # visualize the list of names
+#' \donttest{
+#' #' # Visualize the dictionary
+#' print(tramoseats_dictionary())
 #' summary(tramoseats_dictionary())
-#' # set up vector with names of output objects of interest
-#' user_defined_output <- c("ylin", "residuals.kurtosis")
-#' # generate the corresponding output in an estimation
+#'
+#' # first 10 lines
+#' head(tramoseats_full_dictionary(), n = 10)
+#' # For more structured information call `View(tramoseats_full_dictionary())`
+#'
+#' # Extract names of output of interest
+#' user_defined_output <- tramoseats_dictionary()[c(65, 95, 135)]
+#' user_defined_output
+#'
+#' # Generate the corresponding output in an estimation
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
-#' m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
-#' # retrieve user defined output
+#' m <- tramoseats(y, "rsafull", userdefined=user_defined_output)
+#'
+#' # Retrieve user defined output
 #' tail(m$user_defined$ylin)
 #' m$user_defined$residuals.kurtosis
-#'
-#' @seealso
-#' `tramoseats_full_dictionary` for a detailed version of the output description
+#' m$user_defined$sa_f
+#' }
 #'
 #' @export
 tramoseats_dictionary <- function() {
@@ -610,33 +639,8 @@ tramoseats_dictionary <- function() {
     return(output)
 }
 
-#' TRAMO-SEATS full dictionary
-
-#' @description
-#' Function listing the format and description for all output objects (series, diagnostics, parameters) available with `tramoseats()` function.
-#' Can be used to generate an output non available by default with userdefined option in `tramoseats()`function (see examples).
-#'
-#' @returns returns a data frame containing format and description, for all output objects (series, diagnostics, parameters) available with `tramoseats()`function
 #' @export
-#'
-#' @examplesIf current_java_version >= minimal_java_version
-#' # visualize the dictionary
-#' # first 10 lines
-#' tramoseats_full_dictionary()[1:10,]
-#' # for more structured information call `View(tramoseats_full_dictionary())`
-#' # extract names of output of interest
-#' user_defined_output <- tramoseats_full_dictionary()[95,1]
-#' user_defined_output
-#' # generate the corresponding output in an estimation
-#' y <- rjd3toolkit::ABS$X0.2.09.10.M
-#' m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
-#' # retrieve user defined output
-#' tail(m$user_defined$ylin)
-
-#' @seealso
-#' `tramoseats_dictionary` for an abbreviated version of the output description
-#'
-#' @export
+#' @rdname tramoseats_dictionary
 tramoseats_full_dictionary <- function() {
     dico <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "fullDictionary")
     dico <- `dim<-`(dico, c(6, length(dico) / 6))

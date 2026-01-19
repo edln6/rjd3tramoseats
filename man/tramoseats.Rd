@@ -51,6 +51,7 @@ Seasonal Adjustment with  TRAMO-SEATS
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 library("rjd3toolkit")
 
 sp <- tramoseats_spec("rsafull")
@@ -67,5 +68,6 @@ sp <- set_transform(
     fun = "None"
 )
 tramoseats_fast(y, spec = sp)
+}
 \dontshow{\}) # examplesIf}
 }

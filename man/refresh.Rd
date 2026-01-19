@@ -98,6 +98,7 @@ unless constrained in the domain spec.
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 y <- rjd3toolkit::ABS$X0.2.08.10.M
 # raw series for first estimation
 y_raw <- window(y, end = c(2016, 12))
@@ -155,6 +156,7 @@ spec_1_ref <- tramo_refresh(current_result_spec, # point spec to be refreshed
                                )
 # 2nd estimation with refreshed specification
 tramo_model_ref <- tramo(y_new, spec_1_ref)
+}
 \dontshow{\}) # examplesIf}
 }
 \references{

@@ -42,6 +42,7 @@ calendar or other regression effects and produce forecasts
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 library("rjd3toolkit")
 
 y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -60,5 +61,6 @@ sp <- set_transform(
 tramo_fast(y, spec = sp)
 sp <- set_outlier(sp, outliers.type = c("AO"))
 tramo_fast(y, spec = sp)
+}
 \dontshow{\}) # examplesIf}
 }
