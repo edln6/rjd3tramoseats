@@ -62,7 +62,8 @@ print.JD3_SEATS <- function(x, ...) {
 }
 
 #' @export
-print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), summary_info = getOption("summary_info"),
+print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L),
+                                       summary_info = getOption("summary_info"),
                                        ...) {
     cat("Model: TRAMO-SEATS", "\n", sep = "")
     print(x$preprocessing, digits = digits, summary_info = FALSE, ...)
@@ -71,6 +72,7 @@ print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") -
     }
     return(invisible(x))
 }
+
 #' @export
 summary.JD3_TRAMOSEATS_RSLTS <- function(object, ...) {
     x <- list(
@@ -87,6 +89,7 @@ summary.JD3_TRAMOSEATS_RSLTS <- function(object, ...) {
 summary.JD3_TRAMOSEATS_OUTPUT <- function(object, ...) {
     summary(object$result, ...)
 }
+
 #' @export
 print.summary.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...) {
     cat("Model: TRAMO-SEATS\n")
