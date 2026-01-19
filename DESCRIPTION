@@ -1,7 +1,7 @@
 Type: Package
 Package: rjd3tramoseats
 Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+ 3.x'
-Version: 3.6.0.9000
+Version: 3.6.0
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
@@ -11,7 +11,7 @@ Authors@R: c(
   )
 Description: R Interface to 'JDemetra+ 3.x'
     (<https://github.com/jdemetra>) time series analysis software.  It
-    offers full acces to options and outputs of TRAMO-SEATS (Time series
+    offers full access to options and outputs of TRAMO-SEATS (Time series
     Regression with ARIMA noise, Missing values and Outliers - Signal
     Extraction in ARIMA Time Series), including TRAMO modelling (automatic
     ARIMA model with outlier detection and trading days adjustment).
