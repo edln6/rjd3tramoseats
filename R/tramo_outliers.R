@@ -18,7 +18,7 @@ NULL
 #' @param ml Use of maximum likelihood (otherwise approximation by means of Hannan-Rissanen).
 #' @param clean Clean missing values at the beginning/end of the series. Regression variables are automatically resized, if need be.
 #'
-#' @return a `"JD3_REGARIMA_OUTLIERS"` object.
+#' @returns a `"JD3_REGARIMA_OUTLIERS"` object.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)

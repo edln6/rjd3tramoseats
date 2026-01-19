@@ -15,7 +15,7 @@ NULL
 #' @param userdefined a vector containing the additional output variables
 #' (see [tramoseats_dictionary()]).
 #'
-#' @return the `tramo()` function returns a list with the results
+#' @returns the `tramo()` function returns a list with the results
 #' (`"JD3_tramo_rslts"` object), the estimation specification and the result
 #' specification, while `tramo_fast()` is a faster function that only returns
 #' the results.
@@ -134,7 +134,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #'     fun = "None"
 #' )
 #' tramoseats_fast(y, spec = sp)
-#' @return The `tramoseats()` function returns a list with the results, the
+#' @returns The `tramoseats()` function returns a list with the results, the
 #' estimation specification and the result specification, while
 #' `tramoseats_fast()` is a faster function that only returns the results.
 #' The `.jtramoseats()` functions only results the java object to custom outputs
@@ -308,7 +308,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' 1980) The dates corresponding \code{start} and \code{end} are included in the
 #' span definition.
 #'
-#' @return a new specification, an object of class `"JD3_TRAMOSEATS_SPEC"` or
+#' @returns a new specification, an object of class `"JD3_TRAMOSEATS_SPEC"` or
 #' `"JD3_TRAMO_SPEC"`.
 #'
 #' @references
@@ -471,7 +471,7 @@ forecast_names <- c("forecast", "error", "fraw", "efraw")
 #' @inheritParams tramo
 #' @param nback number of last observations considered for the quality check.
 #'
-#' @return a `mts` object with 7 variables:
+#' @returns a `mts` object with 7 variables:
 #' - `actual` the actual data at the end of the series.
 #'
 #' - `forecast` the forecast of the actual data at the end of the series.
@@ -529,7 +529,7 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #' periods (positive values) or years (negative values). By default, the program
 #' generates a one-year forecast (`nf = -1`).
 #'
-#' @return a `mts` object with 7 variables:
+#' @returns a `mts` object with 7 variables:
 #' - `forecast` the forecast of the actual data at the end of the series.
 #'
 #' - `error` standard deviation of the forecast.
@@ -578,7 +578,7 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 #' Function providing the names all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
 #' Can be used to generate an output non available by default with userdefined option in `tramoseats( )`function (see examples).
 #'
-#' @return returns a vector containing the names of all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
+#' @returns returns a vector containing the names of all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' # visualize the list of names
@@ -608,7 +608,7 @@ tramoseats_dictionary <- function() {
 #' Function listing the format and description for all output objects (series, diagnostics, parameters) available with `tramoseats()` function.
 #' Can be used to generate an output non available by default with userdefined option in `tramoseats()`function (see examples).
 #'
-#' @return returns a data frame containing format and description, for all output objects (series, diagnostics, parameters) available with `tramoseats()`function
+#' @returns returns a data frame containing format and description, for all output objects (series, diagnostics, parameters) available with `tramoseats()`function
 #' @export
 #'
 #' @examplesIf current_java_version >= minimal_java_version

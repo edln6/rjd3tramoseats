@@ -18,7 +18,7 @@ NULL
 #' init_spec <- tramoseats_spec("rsa3")
 #' init_spec <- tramo_spec("tr3")
 #'
-#' @return an object of class `"JD3_TRAMOSEATS_SPEC"` (`tramoseats_spec()`) or
+#' @returns an object of class `"JD3_TRAMOSEATS_SPEC"` (`tramoseats_spec()`) or
 #' `"JD3_TRAMO_SPEC"` (`tramo_spec()`).
 #'
 #' @details

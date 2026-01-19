@@ -68,7 +68,7 @@
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' sa <- tramoseats(y, spec = new_spec)
 #'
-#' @return an object of class  `"JD3_TRAMOSEATS_SPEC"`.
+#' @returns an object of class  `"JD3_TRAMOSEATS_SPEC"`.
 #'
 #' @seealso [tramoseats_spec()].
 #'
