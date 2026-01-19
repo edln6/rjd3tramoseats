@@ -519,7 +519,9 @@ forecast_names <- c("forecast", "error", "fraw", "efraw")
 #' }
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
+#' }
 #' @export
 terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"), nback = 1, context = NULL) {
     jts <- rjd3toolkit::.r2jd_tsdata(ts)

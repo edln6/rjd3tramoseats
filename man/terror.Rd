@@ -45,6 +45,8 @@ TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers 
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
+}
 \dontshow{\}) # examplesIf}
 }
