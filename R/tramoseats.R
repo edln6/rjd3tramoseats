@@ -318,7 +318,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #'
 #' @references
 #' More information on revision policies in JDemetra+ online documentation:
-#' \url{https://jdemetra-new-documentation.netlify.app/t-rev-policies-production}
+#' \url{https://jdemetra-new-documentation.netlify.app/a-rev-policies}
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' y <- rjd3toolkit::ABS$X0.2.08.10.M
