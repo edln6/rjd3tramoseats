@@ -21,6 +21,8 @@ NULL
 #' the results.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' library("rjd3toolkit")
+#'
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' sp <- tramo_spec("trfull")
 #' sp <- add_outlier(sp,
@@ -114,12 +116,20 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
     ))
 }
 
-#' Seasonal Adjustment with  TRAMO-SEATS
+#' @title Seasonal Adjustment with  TRAMO-SEATS
 #'
 #' @inheritParams tramo
 #'
+#' @returns The `tramoseats()` function returns a list with the results, the
+#' estimation specification and the result specification, while
+#' `tramoseats_fast()` is a faster function that only returns the results.
+#' The `.jtramoseats()` functions only results the java object to custom outputs
+#' in other packages (use [rjd3toolkit::dictionary()] to get the list of
+#' variables and [rjd3toolkit::result()] to get a specific variable).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' library("rjd3toolkit")
+#'
 #' sp <- tramoseats_spec("rsafull")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' tramoseats_fast(y, spec = sp)
@@ -134,12 +144,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #'     fun = "None"
 #' )
 #' tramoseats_fast(y, spec = sp)
-#' @returns The `tramoseats()` function returns a list with the results, the
-#' estimation specification and the result specification, while
-#' `tramoseats_fast()` is a faster function that only returns the results.
-#' The `.jtramoseats()` functions only results the java object to custom outputs
-#' in other packages (use [rjd3toolkit::dictionary()] to get the list of
-#' variables and [rjd3toolkit::result()] to get a specific variable).
+#'
 #' @export
 tramoseats <- function(ts,
                        spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", "rsa4", "rsa5"),
@@ -464,29 +469,30 @@ tramoseats_refresh <- function(spec,
 terror_names <- c("actual", "forecast", "error", "rel. error", "transformed", "tr.fcast", "tr.error")
 forecast_names <- c("forecast", "error", "fraw", "efraw")
 
-#' TERROR Quality Control of Outliers
+#' @title TERROR Quality Control of Outliers
 #'
-#'@description TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers at the end of the series
+#' @description TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers at the end of the series
 #'
 #' @inheritParams tramo
 #' @param nback number of last observations considered for the quality check.
 #'
 #' @returns a `mts` object with 7 variables:
-#' - `actual` the actual data at the end of the series.
 #'
-#' - `forecast` the forecast of the actual data at the end of the series.
-#'
-#' - `error` the absolute errors (= observed - forecasts).
-#'
-#' - `rel.error` relative errors ("scores") : ratios between the forecast
-#' errors and the standard deviation of the forecasts of the last observations
-#' (positive values mean under-estimation).
-#'
-#' - `raw` the transformed series. More especially, if the chosen model implies
-#' a log-transformation, the values are obtained after a log-transformation.
-#' Other transformations, such leap year corrections or length-of periods corrections may also be used.
-#' - `fraw` the forecast of the transformed series.
-#' - `efraw` the absolute errors of the transformed series.
+#' \enumerate{
+#' \item \strong{actual}: the actual data at the end of the series;
+#' \item \strong{forecast}: the forecast of the actual data at the end of the
+#' series;
+#' \item \strong{error}: the absolute errors (= observed - forecasts);
+#' \item \strong{rel.error}: relative errors ("scores") : ratios between the
+#' forecast errors and the standard deviation of the forecasts of the last
+#' observations (positive values mean under-estimation);
+#' \item \strong{raw}: the transformed series. More especially, if the chosen
+#' model implies a log-transformation, the values are obtained after a
+#' log-transformation. Other transformations, such leap year corrections or
+#' length-of periods corrections may also be used;
+#' \item \strong{fraw}: the forecast of the transformed series.;
+#' \item \strong{efraw}: the absolute errors of the transformed series.
+#' }
 #'
 #' @examplesIf current_java_version >= minimal_java_version
 #' terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
@@ -522,7 +528,7 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
     }
 }
 
-#' Forecasts with TRAMO
+#' @title Forecasts with TRAMO
 #'
 #' @inheritParams tramo
 #' @param nf the forecasting horizon (`numeric`). The forecast length is in
@@ -536,8 +542,10 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #'
 #' - `fraw` the forecast of the transformed series.
 #' - `efraw` the standard deviation of the forecast of the transformed series.
+#'
 #' @examplesIf current_java_version >= minimal_java_version
 #' tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
+#'
 #' @export
 tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"), nf = -1, context = NULL) {
     # TODO : check parameters
@@ -572,7 +580,7 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
     }
 }
 
-#' TRAMO-SEATS Dictionary
+#' @title TRAMO-SEATS Dictionary
 #'
 #' @description
 #' Function providing the names all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.

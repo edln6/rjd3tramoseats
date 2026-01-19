@@ -36,18 +36,19 @@ NULL
 #' }
 #'
 #' @seealso
-#' - To set the pre-processing parameters:
+#' \enumerate{
+#' \item To set the pre-processing parameters:
 #' [rjd3toolkit::set_arima()], [rjd3toolkit::set_automodel()],
 #' [rjd3toolkit::set_basic()], [rjd3toolkit::set_easter()],
 #' [rjd3toolkit::set_estimate()], [rjd3toolkit::set_outlier()],
 #' [rjd3toolkit::set_tradingdays()], [rjd3toolkit::set_transform()],
 #' [rjd3toolkit::add_outlier()], [rjd3toolkit::remove_outlier()],
 #' [rjd3toolkit::add_ramp()], [rjd3toolkit::remove_ramp()],
-#' [rjd3toolkit::add_usrdefvar()].
+#' [rjd3toolkit::add_usrdefvar()];
+#' \item To set the decomposition parameters: [set_seats()];
+#' \item To set the benchmarking parameters: [rjd3toolkit::set_benchmarking()].
+#' }
 #'
-#' - To set the decomposition parameters: [set_seats()].
-#'
-#' - To set the benchmarking parameters: [rjd3toolkit::set_benchmarking()].
 #' @name tramoseats_spec
 #' @rdname tramoseats_spec
 #' @export

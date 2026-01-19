@@ -23,18 +23,21 @@ specification or a user-defined specification.}
 }
 \value{
 a \code{mts} object with 7 variables:
-\itemize{
-\item \code{actual} the actual data at the end of the series.
-\item \code{forecast} the forecast of the actual data at the end of the series.
-\item \code{error} the absolute errors (= observed - forecasts).
-\item \code{rel.error} relative errors ("scores") : ratios between the forecast
-errors and the standard deviation of the forecasts of the last observations
-(positive values mean under-estimation).
-\item \code{raw} the transformed series. More especially, if the chosen model implies
-a log-transformation, the values are obtained after a log-transformation.
-Other transformations, such leap year corrections or length-of periods corrections may also be used.
-\item \code{fraw} the forecast of the transformed series.
-\item \code{efraw} the absolute errors of the transformed series.
+
+\enumerate{
+\item \strong{actual}: the actual data at the end of the series;
+\item \strong{forecast}: the forecast of the actual data at the end of the
+series;
+\item \strong{error}: the absolute errors (= observed - forecasts);
+\item \strong{rel.error}: relative errors ("scores") : ratios between the
+forecast errors and the standard deviation of the forecasts of the last
+observations (positive values mean under-estimation);
+\item \strong{raw}: the transformed series. More especially, if the chosen
+model implies a log-transformation, the values are obtained after a
+log-transformation. Other transformations, such leap year corrections or
+length-of periods corrections may also be used;
+\item \strong{fraw}: the forecast of the transformed series.;
+\item \strong{efraw}: the absolute errors of the transformed series.
 }
 }
 \description{
