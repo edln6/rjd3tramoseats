@@ -159,5 +159,5 @@ tramo_model_ref <- tramo(y_new, spec_1_ref)
 }
 \references{
 More information on revision policies in JDemetra+ online documentation:
-\url{https://jdemetra-new-documentation.netlify.app/t-rev-policies-production}
+\url{https://jdemetra-new-documentation.netlify.app/a-rev-policies}
 }
