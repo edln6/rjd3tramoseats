@@ -29,8 +29,7 @@ object format and description.
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-\donttest{
-#' # Visualize the dictionary
+# Visualize the dictionary
 print(tramoseats_dictionary())
 summary(tramoseats_dictionary())
 
@@ -44,6 +43,7 @@ user_defined_output
 
 # Generate the corresponding output in an estimation
 y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
 m <- tramoseats(y, "rsafull", userdefined=user_defined_output)
 
 # Retrieve user defined output

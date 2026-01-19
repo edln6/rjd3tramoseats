@@ -21,7 +21,6 @@ NULL
 #' the results.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' \donttest{
 #' library("rjd3toolkit")
 #'
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -29,7 +28,9 @@ NULL
 #' sp <- add_outlier(sp,
 #'     type = c("AO"), c("2015-01-01", "2010-01-01")
 #' )
+#' \donttest{
 #' tramo_fast(y, spec = sp)
+#' }
 #' sp <- set_transform(
 #'     set_tradingdays(
 #'         set_easter(sp, enabled = FALSE),
@@ -37,8 +38,12 @@ NULL
 #'     ),
 #'     fun = "None"
 #' )
+#' \donttest{
 #' tramo_fast(y, spec = sp)
+#' }
 #' sp <- set_outlier(sp, outliers.type = c("AO"))
+#'
+#' \donttest{
 #' tramo_fast(y, spec = sp)
 #' }
 #'
@@ -130,12 +135,14 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #' variables and [rjd3toolkit::result()] to get a specific variable).
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' \donttest{
 #' library("rjd3toolkit")
 #'
 #' sp <- tramoseats_spec("rsafull")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' \donttest{
+#' tramoseats(y, spec = sp)
 #' tramoseats_fast(y, spec = sp)
+#' }
 #' sp <- add_outlier(sp,
 #'     type = c("AO"), c("2015-01-01", "2010-01-01")
 #' )
@@ -146,6 +153,8 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #'     ),
 #'     fun = "None"
 #' )
+#' \donttest{
+#' tramoseats(y, spec = sp)
 #' tramoseats_fast(y, spec = sp)
 #' }
 #'
@@ -331,18 +340,22 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' y_raw <- window(y, end = c(2016, 12))
 #' # raw series for second (refreshed) estimation
 #' y_new <- window(y, end = c(2017, 6))
+#'
 #' # specification for first estimation
 #' spec_tramoseats_1 <- tramoseats_spec("rsafull")
+#'
 #' # first estimation
 #' sa_tramoseats <- tramoseats(y_raw, spec_tramoseats_1)
 #' # refreshing the specification
 #' current_result_spec <- sa_tramoseats$result_spec
 #' current_domain_spec <- sa_tramoseats$estimation_spec
+#'
 #' # policy = "Fixed"
 #' spec_tramoseats_ref <- tramoseats_refresh(current_result_spec, # point spec to be refreshed
 #'     current_domain_spec, # domain spec (set of constraints)
 #'     policy = "Fixed"
 #' )
+#'
 #' # 2nd estimation with refreshed specification
 #' sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 #' # policy = "Outliers"
@@ -365,23 +378,28 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' )
 #' # points from January 2017 (included) until the end of the series will be treated
 #' # as Additive Outliers, the previous reg-Arima model being otherwise kept fixed
+#'
 #' # 2nd estimation with refreshed specification
 #' sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref) #'
 
 #' # same procedure using tramo_refresh
 #' # specification for first estimation
 #' spec_1 <- tramo_spec("tr3")
+#'
 #' # first estimation
 #' tramo_model <- tramo(y_raw, spec_1)
 #' tramo_model$estimation_spec
+#'
 #' # refreshing the specification
 #' current_result_spec <- tramo_model$result_spec
 #' current_domain_spec <- tramo_model$estimation_spec
+#'
 #' # policy = "Fixed"
 #' spec_1_ref <- tramo_refresh(current_result_spec, # point spec to be refreshed
 #'                              current_domain_spec, # domain spec (set of constraints)
 #'                               policy = "Fixed"
 #'                                )
+#'
 #' # 2nd estimation with refreshed specification
 #' tramo_model_ref <- tramo(y_new, spec_1_ref)
 #' }
@@ -609,8 +627,7 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 #' object format and description.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' \donttest{
-#' #' # Visualize the dictionary
+#' # Visualize the dictionary
 #' print(tramoseats_dictionary())
 #' summary(tramoseats_dictionary())
 #'
@@ -624,6 +641,7 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 #'
 #' # Generate the corresponding output in an estimation
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' \donttest{
 #' m <- tramoseats(y, "rsafull", userdefined=user_defined_output)
 #'
 #' # Retrieve user defined output

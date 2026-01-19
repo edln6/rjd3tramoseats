@@ -42,7 +42,6 @@ calendar or other regression effects and produce forecasts
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-\donttest{
 library("rjd3toolkit")
 
 y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -50,7 +49,9 @@ sp <- tramo_spec("trfull")
 sp <- add_outlier(sp,
     type = c("AO"), c("2015-01-01", "2010-01-01")
 )
+\donttest{
 tramo_fast(y, spec = sp)
+}
 sp <- set_transform(
     set_tradingdays(
         set_easter(sp, enabled = FALSE),
@@ -58,8 +59,12 @@ sp <- set_transform(
     ),
     fun = "None"
 )
+\donttest{
 tramo_fast(y, spec = sp)
+}
 sp <- set_outlier(sp, outliers.type = c("AO"))
+
+\donttest{
 tramo_fast(y, spec = sp)
 }
 \dontshow{\}) # examplesIf}

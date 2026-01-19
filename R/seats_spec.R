@@ -69,7 +69,9 @@
 #'     bias = TRUE
 #' )
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' \donttest{
 #' sa <- tramoseats(y, spec = new_spec)
+#' }
 #'
 #' @returns an object of class  `"JD3_TRAMOSEATS_SPEC"`.
 #'

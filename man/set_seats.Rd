@@ -99,7 +99,9 @@ new_spec <- set_seats(init_spec,
     bias = TRUE
 )
 y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
 sa <- tramoseats(y, spec = new_spec)
+}
 \dontshow{\}) # examplesIf}
 }
 \references{

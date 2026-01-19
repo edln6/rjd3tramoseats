@@ -51,12 +51,14 @@ Seasonal Adjustment with  TRAMO-SEATS
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
-\donttest{
 library("rjd3toolkit")
 
 sp <- tramoseats_spec("rsafull")
 y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
+tramoseats(y, spec = sp)
 tramoseats_fast(y, spec = sp)
+}
 sp <- add_outlier(sp,
     type = c("AO"), c("2015-01-01", "2010-01-01")
 )
@@ -67,6 +69,8 @@ sp <- set_transform(
     ),
     fun = "None"
 )
+\donttest{
+tramoseats(y, spec = sp)
 tramoseats_fast(y, spec = sp)
 }
 \dontshow{\}) # examplesIf}
