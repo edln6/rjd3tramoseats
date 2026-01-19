@@ -41,11 +41,14 @@ See example.}
 
 \item{context}{The context of the specification.}
 }
+\value{
+returns a list
+}
 \description{
-Compute revisions history
+Computes revisions history
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (jversion >= 17) withAutoprint(\{ # examplesIf}
 s <- rjd3toolkit::ABS$X0.2.09.10.M
 sa_mod <- tramoseats(s)
 data_ids <- list(
