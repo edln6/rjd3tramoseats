@@ -54,6 +54,9 @@ decomposition, SEATS:
 \code{"Noisy"} - estimates a new model by adding a white noise to the
 non-admissible model estimated by TRAMO. Default="Legacy".}
 }
+\value{
+returns a "JD3_UCARIMA" object
+}
 \description{
 SEATS Decomposition
 }

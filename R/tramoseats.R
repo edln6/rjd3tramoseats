@@ -4,6 +4,10 @@ NULL
 
 #' @title TRAMO model, pre-adjustment in TRAMO-SEATS
 #'
+#' @description allows to model the series with a Reg-Arima model, estimate outlier,
+#' calendar or other regression effects and produce forecasts
+#'
+#'
 #' @param ts a univariate time series.
 #' @param spec the model specification. Can be either the name of a predefined
 #' specification or a user-defined specification.
@@ -12,12 +16,11 @@ NULL
 #' (see [tramoseats_dictionary()]).
 #'
 #' @return the `tramo()` function returns a list with the results
-#' (`"JD3_regarima_rslts"` object), the estimation specification and the result
+#' (`"JD3_tramo_rslts"` object), the estimation specification and the result
 #' specification, while `tramo_fast()` is a faster function that only returns
 #' the results.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' library("rjd3toolkit")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' sp <- tramo_spec("trfull")
 #' sp <- add_outlier(sp,
@@ -117,7 +120,6 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #'
 #'
 #' @examplesIf current_java_version >= minimal_java_version
-#' library("rjd3toolkit")
 #' sp <- tramoseats_spec("rsafull")
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
 #' tramoseats_fast(y, spec = sp)
@@ -245,7 +247,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' @title Refresh a specification with constraints
 #'
 #' @description
-#' Function allowing to create a new specification by updating a specification
+#' Functions `tramoseats_refresh()` and `tramo_refresh()` allow to create a new specification by updating a specification
 #' used for a previous estimation. Some selected parameters will be kept fixed
 #' (previous estimation results) while others will be freed for re-estimation in
 #' a domain of constraints. See details and examples.
@@ -355,6 +357,23 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' # as Additive Outliers, the previous reg-Arima model being otherwise kept fixed
 #' # 2nd estimation with refreshed specification
 #' sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref) #'
+
+#' # same procedure using tramo_refresh
+#' # specification for first estimation
+#' spec_1 <- tramo_spec("tr3")
+#' # first estimation
+#' tramo_model <- tramo(y_raw, spec_1)
+#' tramo_model$estimation_spec
+#' # refreshing the specification
+#' current_result_spec <- tramo_model$result_spec
+#' current_domain_spec <- tramo_model$estimation_spec
+#' # policy = "Fixed"
+#' spec_1_ref <- tramo_refresh(current_result_spec, # point spec to be refreshed
+#'                              current_domain_spec, # domain spec (set of constraints)
+#'                               policy = "Fixed"
+#'                                )
+#' # 2nd estimation with refreshed specification
+#'tramo_model_ref <- tramo(y_new, spec_1_ref)
 #'
 #' @name refresh
 #' @rdname refresh
@@ -447,7 +466,7 @@ forecast_names <- c("forecast", "error", "fraw", "efraw")
 
 #' TERROR Quality Control of Outliers
 #'
-#' TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers at the end of the series
+#'@description TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers at the end of the series
 #'
 #' @inheritParams tramo
 #' @param nback number of last observations considered for the quality check.
@@ -555,21 +574,67 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 
 #' TRAMO-SEATS Dictionary
 #'
-#' @return A vector containing the names of all the available output objects (series, diagnostics, parameters).
+#' @description
+#' Function providing the names all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
+#' Can be used to generate an output non available by default with userdefined option in `tramoseats( )`function (see examples).
+#'
+#' @return returns a vector containing the names of all output objects (series, diagnostics, parameters) available with `tramoseats( )` function.
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' # visualize the list of names
+#' summary(tramoseats_dictionary())
+#' # set up vector with names of output objects of interest
+#' user_defined_output <- c("ylin", "residuals.kurtosis")
+#' # generate the corresponding output in an estimation
+#' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
+#' # retrieve user defined output
+#' tail(m$user_defined$ylin)
+#' m$user_defined$residuals.kurtosis
+#'
+#' @seealso
+#' `tramoseats_full_dictionary` for a detailed version of the output description
 #'
 #' @export
 tramoseats_dictionary <- function() {
-    return(.jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "dictionary"))
+    output <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "dictionary")
+    class(output) <- "JD3_DICTIONARY"
+    return(output)
 }
 
 #' TRAMO-SEATS full dictionary
+
+#' @description
+#' Function listing the format and description for all output objects (series, diagnostics, parameters) available with `tramoseats()` function.
+#' Can be used to generate an output non available by default with userdefined option in `tramoseats()`function (see examples).
 #'
-#' @return A matrix with a complete description of the available output objects
+#' @return returns a data frame containing format and description, for all output objects (series, diagnostics, parameters) available with `tramoseats()`function
+#' @export
+#'
+#' @examplesIf current_java_version >= minimal_java_version
+#' # visualize the dictionary
+#' # first 10 lines
+#' tramoseats_full_dictionary()[1:10,]
+#' # for more structured information call `View(tramoseats_full_dictionary())`
+#' # extract names of output of interest
+#' user_defined_output <- tramoseats_full_dictionary()[95,1]
+#' user_defined_output
+#' # generate the corresponding output in an estimation
+#' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' m<-tramoseats(y,"rsafull", userdefined=user_defined_output)
+#' # retrieve user defined output
+#' tail(m$user_defined$ylin)
+
+#' @seealso
+#' `tramoseats_dictionary` for an abbreviated version of the output description
+#'
 #' @export
 tramoseats_full_dictionary <- function() {
     dico <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[S", "fullDictionary")
     dico <- `dim<-`(dico, c(6, length(dico) / 6))
     dico <- t(dico)
     dico <- `colnames<-`(dico, c("name", "description", "detail", "output", "type", "fullname"))
+    dico <- as.data.frame(dico)
+    class(dico) <- c("JD3_FULL_DICTIONARY", "data.frame")
     return(dico)
 }

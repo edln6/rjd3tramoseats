@@ -7,6 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+* Classes to `tramoseats_dictionary()` and `tramoseats_full_dictionary()`
+
+
 ## [3.6.0] - 2025-11-21
 
 ### Added

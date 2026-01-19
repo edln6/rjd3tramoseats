@@ -43,5 +43,4 @@ Collate:
     'tramo_outliers.R'
     'tramo_spec.R'
     'tramoseats.R'
-    'ud_var.R'
     'zzz.R'

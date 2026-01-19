@@ -41,8 +41,11 @@ See example.}
 
 \item{context}{The context of the specification.}
 }
+\value{
+returns a list
+}
 \description{
-Compute revisions history
+Computes revisions history
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}

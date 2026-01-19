@@ -6,6 +6,7 @@ NULL
 #'
 #' @param sarima SARIMA model (see [rjd3toolkit::sarima_model()]).
 #' @inheritParams set_seats
+#' @return returns a "JD3_UCARIMA" object
 #'
 #'
 #' @examplesIf current_java_version >= minimal_java_version
