@@ -570,7 +570,9 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #' - `efraw` the standard deviation of the forecast of the transformed series.
 #'
 #' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
+#' }
 #'
 #' @export
 tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"), nf = -1, context = NULL) {
