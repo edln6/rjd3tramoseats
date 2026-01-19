@@ -37,6 +37,8 @@ Forecasts with TRAMO
 }
 \examples{
 \dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
+}
 \dontshow{\}) # examplesIf}
 }
