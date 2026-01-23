@@ -11,7 +11,7 @@ NULL
 #' @param ts a univariate time series.
 #' @param spec the model specification. Can be either the name of a predefined
 #' specification or a user-defined specification.
-#' @param context the dictionnary of variables.
+#' @param context the dictionary of variables.
 #' @param userdefined a vector containing the additional output variables
 #' (see [tramoseats_dictionary()]).
 #'

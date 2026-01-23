@@ -19,7 +19,7 @@ specification or a user-defined specification.}
 
 \item{nback}{number of last observations considered for the quality check.}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 }
 \value{
 a \code{mts} object with 7 variables:

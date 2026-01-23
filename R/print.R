@@ -1,5 +1,6 @@
 #' @importFrom stats printCoefmat end time
 #' @importFrom utils capture.output
+#' @noRd
 print_diagnostics <- function(x, digits = max(3L, getOption("digits") - 3L),
                               ...) {
     variance_decomposition <- x$variance_decomposition

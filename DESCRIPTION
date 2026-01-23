@@ -46,3 +46,6 @@ Collate:
     'tramo_spec.R'
     'tramoseats.R'
     'zzz.R'
+Suggests: 
+    spelling
+Language: en-US

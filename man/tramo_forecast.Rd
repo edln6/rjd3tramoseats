@@ -21,7 +21,7 @@ specification or a user-defined specification.}
 periods (positive values) or years (negative values). By default, the program
 generates a one-year forecast (\code{nf = -1}).}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 }
 \value{
 a \code{mts} object with 7 variables:

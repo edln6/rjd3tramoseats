@@ -33,7 +33,7 @@ tramoseats_fast(
 \item{spec}{the model specification. Can be either the name of a predefined
 specification or a user-defined specification.}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 
 \item{userdefined}{a vector containing the additional output variables
 (see \code{\link[=tramoseats_dictionary]{tramoseats_dictionary()}}).}
