@@ -13,14 +13,18 @@ devtools::test()
 testthat::test_dir("tests/testthat/")
 
 # Run examples
-devtools::run_examples()
+devtools::run_examples(run_donttest = TRUE, run_dontrun = TRUE)
 
 # autotest::autotest_package(test = TRUE)
 
 # Check package as CRAN using the correct CRAN repo
-withr::with_options(list(repos = c(CRAN = "https://cloud.r-project.org/")),
-                    {callr::default_repos()
-                        rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran")) })
+withr::with_options(
+    new = list(repos = c(CRAN = "https://cloud.r-project.org/")),
+    code = {
+        callr::default_repos()
+        rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"))
+    }
+)
 # devtools::check(args = c("--no-manual", "--as-cran"))
 
 # Check content
