@@ -1,6 +1,6 @@
 Type: Package
 Package: rjd3tramoseats
-Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+ 3.x'
+Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+' 3.x
 Version: 3.6.0
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
@@ -9,12 +9,12 @@ Authors@R: c(
     person("Tanguy", "Barthelemy", , "tanguy.barthelemy@insee.fr", role = c("aut", "cre", "art")),
     person("Anna", "Smyk", , "anna.smyk@insee.fr", role = "aut")
   )
-Description: R Interface to 'JDemetra+ 3.x'
-    (<https://github.com/jdemetra>) time series analysis software.  It
-    offers full access to options and outputs of TRAMO-SEATS (Time series
-    Regression with ARIMA noise, Missing values and Outliers - Signal
-    Extraction in ARIMA Time Series), including TRAMO modelling (automatic
-    ARIMA model with outlier detection and trading days adjustment).
+Description: Interface to 'JDemetra+' 3.x (<https://github.com/jdemetra>)
+    time series analysis software.  It offers full access to options and
+    outputs of 'TRAMO-SEATS' (Time series Regression with ARIMA noise,
+    Missing values and Outliers - Signal Extraction in ARIMA Time Series),
+    including 'TRAMO' modelling (ARIMA model with outlier detection and
+    trading days adjustment).
 License: EUPL
 URL: https://github.com/rjdverse/rjd3tramoseats,
     https://rjdverse.github.io/rjd3tramoseats/
@@ -23,9 +23,11 @@ Depends:
     R (>= 4.1.0)
 Imports:
     rJava (>= 1.0-6),
+    rjd3jars,
     rjd3toolkit (>= 3.6.0),
     RProtoBuf (>= 0.4.20),
-    rjd3jars
+    stats,
+    utils
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

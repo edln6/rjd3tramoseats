@@ -46,6 +46,18 @@ specification or a user-defined specification.}
 
 \item{x}{useless parameter}
 }
+\value{
+All these functions are deprecated and return the same value as the
+function that replaces them:
+\itemize{
+\item \code{spec_tramoseats()} returns the same value as \code{tramoseats_spec()}
+\item \code{spec_tramo()} returns the same value as \code{tramo_spec()}
+\item \code{fast_tramoseats()} returns the same value as \code{tramoseats_fast()}
+\item \code{fast_regarima()} returns the same value as \code{regarima_fast()}
+\item \code{.jtramoseats()} returns the same value as \code{jtramoseats()}
+\item \code{userdefined_variables_tramoseats()} returns the same value as \code{tramoseats_dictionary()}
+}
+}
 \description{
 Deprecated functions
 }

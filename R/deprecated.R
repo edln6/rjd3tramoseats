@@ -4,6 +4,16 @@
 #' @inheritParams tramoseats
 #' @inheritParams tramoseats_spec
 #'
+#' @returns All these functions are deprecated and return the same value as the
+#' function that replaces them:
+#'
+#' - `spec_tramoseats()` returns the same value as `tramoseats_spec()`
+#' - `spec_tramo()` returns the same value as `tramo_spec()`
+#' - `fast_tramoseats()` returns the same value as `tramoseats_fast()`
+#' - `fast_regarima()` returns the same value as `regarima_fast()`
+#' - `.jtramoseats()` returns the same value as `jtramoseats()`
+#' - `userdefined_variables_tramoseats()` returns the same value as `tramoseats_dictionary()`
+#'
 #' @name deprecated-rjd3tramoseats
 #'
 #' @export

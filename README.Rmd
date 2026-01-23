@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 library("rjd3tramoseats")
 ```
 
-# `rjd3tramoseats` <a href="https://rjdverse.github.io/rjd3tramoseats/"><img src="man/figures/logo.png" align="right" height="150" style="float:right; height:150px;"/></a>
+# {rjd3tramoseats} <a href="https://rjdverse.github.io/rjd3tramoseats/"><img src="man/figures/logo.png" align="right" height="150" style="float:right; height:150px;"/></a>
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/rjd3tramoseats)](https://cran.r-project.org/package=rjd3tramoseats)
@@ -28,7 +28,7 @@ library("rjd3tramoseats")
 <!-- badges: end -->
 
 
-rjd3tramoseats offers full access to options and outputs of TRAMO-SEATS (`rjd3tramoseats::tramoseats()`), including TRAMO modelling (`rjd3tramoseats::tramo()`) and SEATS decomposition (`rjd3tramoseats::seats_decompose()`).
+{rjd3tramoseats} offers full access to options and outputs of TRAMO-SEATS (`rjd3tramoseats::tramoseats()`), including TRAMO modelling (`rjd3tramoseats::tramo()`) and SEATS decomposition (`rjd3tramoseats::seats_decompose()`).
 
 A specification can be created with `rjd3tramoseats::tramo_spec()` or `rjd3tramoseats::tramoseats_spec()` and can be modified with the following functions:
 
@@ -64,7 +64,7 @@ install.packages("rjd3tramoseats", repos = c("https://rjdverse.r-universe.dev", 
 
 ### Development version
 
-You can install the development version of **rjd3tramoseats** from [GitHub](https://github.com/) with:
+You can install the development version of **{rjd3tramoseats}** from [GitHub](https://github.com/) with:
 
 ```{r, echo = TRUE, eval = FALSE}
 # install.packages("remotes")

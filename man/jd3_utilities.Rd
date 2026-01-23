@@ -23,6 +23,10 @@
 \arguments{
 \item{spec, jspec, jrslts}{parameters.}
 }
+\value{
+These functions return specification in Java, proto or R.
+}
 \description{
-These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
+These functions are used in all JDemetra+ 3.0 packages to easily interact
+between R and Java objects.
 }
