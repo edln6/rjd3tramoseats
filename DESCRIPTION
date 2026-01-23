@@ -14,7 +14,7 @@ Description: Interface to 'JDemetra+' 3.x (<https://github.com/jdemetra>)
     outputs of 'TRAMO-SEATS' (Time series Regression with ARIMA noise,
     Missing values and Outliers - Signal Extraction in ARIMA Time Series),
     including 'TRAMO' modelling (ARIMA model with outlier detection and
-    trading days adjustment).
+    trading days adjustment). ARIMA = AutoRegressive Integrated Moving Average.
 License: EUPL
 URL: https://github.com/rjdverse/rjd3tramoseats,
     https://rjdverse.github.io/rjd3tramoseats/
