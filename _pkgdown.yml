@@ -19,6 +19,7 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
+      aria-label: Home
     reference:
       text: Reference
       href: reference/index.html
@@ -97,6 +98,8 @@ reference:
     - '`.jd2r_spec_tramoseats`'
     - '`.r2jd_spec_tramoseats`'
     - '`.jtramoseats`'
+    - '`current_java_version`'
+    - '`minimal_java_version`'
 - title: Deprecated functions
   desc: Avoid using
   contents:
