@@ -41,7 +41,7 @@ RSAfull/TRfull |\tab automatic |\tab AO/LS/TC |\tab automatic |\tab automatic
 }
 }
 \examples{
-\dontshow{if (jversion >= 17) withAutoprint(\{ # examplesIf}
+\dontshow{if (current_java_version >= minimal_java_version) withAutoprint(\{ # examplesIf}
 init_spec <- tramoseats_spec()
 init_spec <- tramo_spec()
 init_spec <- tramoseats_spec("rsa3")
@@ -49,7 +49,7 @@ init_spec <- tramo_spec("tr3")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\itemize{
+\enumerate{
 \item To set the pre-processing parameters:
 \code{\link[rjd3toolkit:set_arima]{rjd3toolkit::set_arima()}}, \code{\link[rjd3toolkit:set_automodel]{rjd3toolkit::set_automodel()}},
 \code{\link[rjd3toolkit:set_basic]{rjd3toolkit::set_basic()}}, \code{\link[rjd3toolkit:set_easter]{rjd3toolkit::set_easter()}},
@@ -57,8 +57,8 @@ init_spec <- tramo_spec("tr3")
 \code{\link[rjd3toolkit:set_tradingdays]{rjd3toolkit::set_tradingdays()}}, \code{\link[rjd3toolkit:set_transform]{rjd3toolkit::set_transform()}},
 \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::add_outlier()}}, \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::remove_outlier()}},
 \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::add_ramp()}}, \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::remove_ramp()}},
-\code{\link[rjd3toolkit:add_usrdefvar]{rjd3toolkit::add_usrdefvar()}}.
-\item To set the decomposition parameters: \code{\link[=set_seats]{set_seats()}}.
+\code{\link[rjd3toolkit:add_usrdefvar]{rjd3toolkit::add_usrdefvar()}};
+\item To set the decomposition parameters: \code{\link[=set_seats]{set_seats()}};
 \item To set the benchmarking parameters: \code{\link[rjd3toolkit:set_benchmarking]{rjd3toolkit::set_benchmarking()}}.
 }
 }

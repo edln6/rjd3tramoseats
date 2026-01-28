@@ -13,7 +13,7 @@ NULL
 #' Revisions History
 #'
 #' @description Computes revisions history
-#' @return returns a list
+#' @returns returns a list
 #'
 #' @param ts The time series used for the estimation.
 #' @param spec The specification used.
@@ -37,7 +37,8 @@ NULL
 #' See example.
 #' @param context The context of the specification.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
+#' \donttest{
 #' s <- rjd3toolkit::ABS$X0.2.09.10.M
 #' sa_mod <- tramoseats(s)
 #' data_ids <- list(
@@ -59,6 +60,7 @@ NULL
 #'     list(start = "2010-01-01", end = "2020-01-01", id = "t")
 #' )
 #' rh <- tramoseats_revisions(s, sa_mod$result_spec, data_ids, ts_ids, cmp_ids)
+#' }
 #' @export
 tramoseats_revisions <- function(ts, spec, data_ids = NULL, ts_ids = NULL, cmp_ids = NULL, context = NULL) {
     jts <- rjd3toolkit::.r2jd_tsdata(ts)

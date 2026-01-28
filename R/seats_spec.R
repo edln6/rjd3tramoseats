@@ -45,17 +45,20 @@
 #'
 #' @param algorithm character: the estimation method for the unobserved
 #' components. The choice can be made from:
-#' - `"Burman"`: the default value. May result in a significant underestimation
-#' of the components' standard deviation, as it may become numerically unstable
-#' when some roots of the MA polynomial are near 1;
-#' - `"KalmanSmoother"`: it is not disturbed by the (quasi-) unit roots in MA;
+#' \enumerate{
+#' \item \strong{Burman}: the default value. May result in a significant
+#' underestimation of the components' standard deviation, as it may become
+#' numerically unstable when some roots of the MA polynomial are near 1;
+#' \item \strong{KalmanSmoother}: it is not disturbed by the (quasi-) unit
+#' roots in MA.
+#' }
 #'
 #' @param bcasts,fcasts numeric: the number of backasts (`bcasts`) or forecasts
 #' (`fcasts`) used in the decomposition in periods (positive values) or years
 #' (negative values). Default `bcasts` = 0. Default `fcasts` = 0.
 #' @param bias TODO.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' init_spec <- tramoseats_spec("rsafull")
 #' new_spec <- set_seats(init_spec,
 #'     approximation = "Legacy",
@@ -66,9 +69,11 @@
 #'     bias = TRUE
 #' )
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
+#' \donttest{
 #' sa <- tramoseats(y, spec = new_spec)
+#' }
 #'
-#' @return an object of class  `"JD3_TRAMOSEATS_SPEC"`.
+#' @returns an object of class  `"JD3_TRAMOSEATS_SPEC"`.
 #'
 #' @seealso [tramoseats_spec()].
 #'

@@ -6,10 +6,10 @@ NULL
 #'
 #' @param sarima SARIMA model (see [rjd3toolkit::sarima_model()]).
 #' @inheritParams set_seats
-#' @return returns a "JD3_UCARIMA" object
+#' @returns returns a "JD3_UCARIMA" object
 #'
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf current_java_version >= minimal_java_version
 #' seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 #' @export
 seats_decompose <- function(sarima, seas.tolerance = 2, trend.boundary = 0.5, seas.boundary = 0.8,

@@ -32,7 +32,31 @@ spec_tramo(name = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"))
 userdefined_variables_tramoseats(x = c("TRAMO-SEATS", "TRAMO"))
 }
 \arguments{
-\item{ts, spec, context, userdefined, name}{Parameters.}
+\item{ts}{a univariate time series.}
+
+\item{spec}{the model specification. Can be either the name of a predefined
+specification or a user-defined specification.}
+
+\item{context}{the dictionary of variables.}
+
+\item{userdefined}{a vector containing the additional output variables
+(see \code{\link[=tramoseats_dictionary]{tramoseats_dictionary()}}).}
+
+\item{name}{the name of a predefined specification.}
+
+\item{x}{useless parameter}
+}
+\value{
+All these functions are deprecated and return the same value as the
+function that replaces them:
+\itemize{
+\item \code{spec_tramoseats()} returns the same value as \code{tramoseats_spec()}
+\item \code{spec_tramo()} returns the same value as \code{tramo_spec()}
+\item \code{fast_tramoseats()} returns the same value as \code{tramoseats_fast()}
+\item \code{fast_regarima()} returns the same value as \code{regarima_fast()}
+\item \code{.jtramoseats()} returns the same value as \code{jtramoseats()}
+\item \code{userdefined_variables_tramoseats()} returns the same value as \code{tramoseats_dictionary()}
+}
 }
 \description{
 Deprecated functions
