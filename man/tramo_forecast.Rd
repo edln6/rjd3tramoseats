@@ -21,7 +21,7 @@ specification or a user-defined specification.}
 periods (positive values) or years (negative values). By default, the program
 generates a one-year forecast (\code{nf = -1}).}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 }
 \value{
 a \code{mts} object with 7 variables:
@@ -36,7 +36,9 @@ a \code{mts} object with 7 variables:
 Forecasts with TRAMO
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
+}
 \dontshow{\}) # examplesIf}
 }

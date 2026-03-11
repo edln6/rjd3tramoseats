@@ -69,11 +69,12 @@ values [0.9,1]. Default=0.95.}
 
 \item{algorithm}{character: the estimation method for the unobserved
 components. The choice can be made from:
-\itemize{
-\item \code{"Burman"}: the default value. May result in a significant underestimation
-of the components' standard deviation, as it may become numerically unstable
-when some roots of the MA polynomial are near 1;
-\item \code{"KalmanSmoother"}: it is not disturbed by the (quasi-) unit roots in MA;
+\enumerate{
+\item \strong{Burman}: the default value. May result in a significant
+underestimation of the components' standard deviation, as it may become
+numerically unstable when some roots of the MA polynomial are near 1;
+\item \strong{KalmanSmoother}: it is not disturbed by the (quasi-) unit
+roots in MA.
 }}
 
 \item{bias}{TODO.}
@@ -87,7 +88,7 @@ seasonal adjustment process.
 (Seats is an Arima Model Based decomposition algorithm working in conjunction with Tramo.)
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
 init_spec <- tramoseats_spec("rsafull")
 new_spec <- set_seats(init_spec,
     approximation = "Legacy",
@@ -98,7 +99,9 @@ new_spec <- set_seats(init_spec,
     bias = TRUE
 )
 y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
 sa <- tramoseats(y, spec = new_spec)
+}
 \dontshow{\}) # examplesIf}
 }
 \references{

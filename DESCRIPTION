@@ -1,7 +1,7 @@
 Type: Package
 Package: rjd3tramoseats
-Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+ 3.x'
-Version: 3.6.0
+Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+' 3.x
+Version: 3.7.1
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
@@ -9,13 +9,13 @@ Authors@R: c(
     person("Tanguy", "Barthelemy", , "tanguy.barthelemy@insee.fr", role = c("aut", "cre", "art")),
     person("Anna", "Smyk", , "anna.smyk@insee.fr", role = "aut")
   )
-Description: R Interface to 'JDemetra+ 3.x'
-    (<https://github.com/jdemetra>) time series analysis software.  It
-    offers full acces to options and outputs of TRAMO-SEATS (Time series
-    Regression with ARIMA noise, Missing values and Outliers - Signal
-    Extraction in ARIMA Time Series), including TRAMO modelling (automatic
-    ARIMA model with outlier detection and trading days adjustment).
-License: file LICENSE
+Description: Interface to 'JDemetra+' 3.x (<https://github.com/jdemetra>)
+    time series analysis software.  It offers full access to options and
+    outputs of 'TRAMO-SEATS' (Time series Regression with ARIMA noise,
+    Missing values and Outliers - Signal Extraction in ARIMA Time Series),
+    including 'TRAMO' modelling (ARIMA model with outlier detection and
+    trading days adjustment). ARIMA = AutoRegressive Integrated Moving Average.
+License: EUPL
 URL: https://github.com/rjdverse/rjd3tramoseats,
     https://rjdverse.github.io/rjd3tramoseats/
 BugReports: https://github.com/rjdverse/rjd3tramoseats/issues
@@ -23,13 +23,13 @@ Depends:
     R (>= 4.1.0)
 Imports:
     rJava (>= 1.0-6),
-    rjd3toolkit (>= 3.6.0),
-    RProtoBuf (>= 0.4.20)
-Remotes: 
-    github::rjdverse/rjd3toolkit@*release
+    rjd3toolkit (>= 3.7.1),
+    RProtoBuf (>= 0.4.20),
+    stats,
+    utils
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 SystemRequirements: Java (>= 17)
 Collate: 
     'deprecated.R'
@@ -44,5 +44,7 @@ Collate:
     'tramo_outliers.R'
     'tramo_spec.R'
     'tramoseats.R'
-    'ud_var.R'
     'zzz.R'
+Suggests: 
+    spelling
+Language: en-US

@@ -54,11 +54,14 @@ decomposition, SEATS:
 \code{"Noisy"} - estimates a new model by adding a white noise to the
 non-admissible model estimated by TRAMO. Default="Legacy".}
 }
+\value{
+returns a "JD3_UCARIMA" object
+}
 \description{
 SEATS Decomposition
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
 seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 \dontshow{\}) # examplesIf}
 }

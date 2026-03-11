@@ -2,11 +2,15 @@
 #' @import RProtoBuf
 NULL
 
-#' Java Utility Functions
+#' @title Java Utility Functions
 #'
-#' These functions are used in all JDemetra+ 3.0 packages to easily interact between R and Java objects.
+#' @description
+#' These functions are used in all JDemetra+ 3.0 packages to easily interact
+#' between R and Java objects.
 #'
 #' @param spec,jspec,jrslts parameters.
+#'
+#' @returns These functions return specification in Java, proto or R.
 #'
 #' @name jd3_utilities
 NULL

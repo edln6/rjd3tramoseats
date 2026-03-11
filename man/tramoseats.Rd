@@ -33,7 +33,7 @@ tramoseats_fast(
 \item{spec}{the model specification. Can be either the name of a predefined
 specification or a user-defined specification.}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 
 \item{userdefined}{a vector containing the additional output variables
 (see \code{\link[=tramoseats_dictionary]{tramoseats_dictionary()}}).}
@@ -50,11 +50,15 @@ variables and \code{\link[rjd3toolkit:dictionary]{rjd3toolkit::result()}} to get
 Seasonal Adjustment with  TRAMO-SEATS
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
+
 sp <- tramoseats_spec("rsafull")
 y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
+tramoseats(y, spec = sp)
 tramoseats_fast(y, spec = sp)
+}
 sp <- add_outlier(sp,
     type = c("AO"), c("2015-01-01", "2010-01-01")
 )
@@ -65,6 +69,9 @@ sp <- set_transform(
     ),
     fun = "None"
 )
+\donttest{
+tramoseats(y, spec = sp)
 tramoseats_fast(y, spec = sp)
+}
 \dontshow{\}) # examplesIf}
 }

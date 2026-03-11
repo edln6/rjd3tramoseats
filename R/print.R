@@ -1,5 +1,6 @@
 #' @importFrom stats printCoefmat end time
 #' @importFrom utils capture.output
+#' @noRd
 print_diagnostics <- function(x, digits = max(3L, getOption("digits") - 3L),
                               ...) {
     variance_decomposition <- x$variance_decomposition
@@ -62,7 +63,8 @@ print.JD3_SEATS <- function(x, ...) {
 }
 
 #' @export
-print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), summary_info = getOption("summary_info"),
+print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L),
+                                       summary_info = getOption("summary_info"),
                                        ...) {
     cat("Model: TRAMO-SEATS", "\n", sep = "")
     print(x$preprocessing, digits = digits, summary_info = FALSE, ...)
@@ -71,6 +73,7 @@ print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") -
     }
     return(invisible(x))
 }
+
 #' @export
 summary.JD3_TRAMOSEATS_RSLTS <- function(object, ...) {
     x <- list(
@@ -87,6 +90,7 @@ summary.JD3_TRAMOSEATS_RSLTS <- function(object, ...) {
 summary.JD3_TRAMOSEATS_OUTPUT <- function(object, ...) {
     summary(object$result, ...)
 }
+
 #' @export
 print.summary.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...) {
     cat("Model: TRAMO-SEATS\n")
@@ -102,6 +106,16 @@ print.summary.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("di
 #' @export
 print.JD3_TRAMOSEATS_OUTPUT <- function(x, digits = max(3L, getOption("digits") - 3L), summary_info = getOption("summary_info"),
                                         ...) {
+    series_span <- x$result_spec$tramo$basic$span
+    model_span <- x$result_spec$tramo$estimate$span
+
+    cat("Serie span: ")
+    print(series_span)
+    if (!identical(series_span, model_span)) {
+        cat("Model span: ")
+        print(model_span)
+    }
+
     print(x$result, digits = digits, summary_info = summary_info, ...)
 
     return(invisible(x))
@@ -185,13 +199,15 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
 
     cat("\n", "Series", "\n", sep = "")
 
-    cat("Serie span: ", x$basic$span$type, "\n", sep = "")
+    cat("Serie span: ")
+    print(x$basic$span)
     cat("Preliminary Check: ", ifelse(x$basic$preliminaryCheck, "Yes", "No"), "\n", sep = "")
 
 
     cat("\n", "Estimate", "\n", sep = "")
 
-    cat("Model span: ", x$estimate$span$type, "\n", sep = "")
+    cat("Model span: ")
+    print(x$estimate$span)
     cat("Tolerance: ", x$estimate$tol, "\n", sep = "")
     cat("Exact ML: ", ifelse(x$estimate$ml, "Yes", "No"), "\n", sep = "")
     cat("Unit root limit: ", x$estimate$ubp, "\n", sep = "")

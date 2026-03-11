@@ -19,6 +19,7 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
+      aria-label: Home
     reference:
       text: Reference
       href: reference/index.html
@@ -104,10 +105,3 @@ reference:
     - '`fast_tramo`'
     - '`spec_tramoseats`'
     - '`spec_tramo`'
-
-
-
-
-
-
-

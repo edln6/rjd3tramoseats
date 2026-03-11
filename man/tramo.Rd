@@ -25,29 +25,33 @@ tramo_fast(
 \item{spec}{the model specification. Can be either the name of a predefined
 specification or a user-defined specification.}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 
 \item{userdefined}{a vector containing the additional output variables
 (see \code{\link[=tramoseats_dictionary]{tramoseats_dictionary()}}).}
 }
 \value{
 the \code{tramo()} function returns a list with the results
-(\code{"JD3_regarima_rslts"} object), the estimation specification and the result
+(\code{"JD3_tramo_rslts"} object), the estimation specification and the result
 specification, while \code{tramo_fast()} is a faster function that only returns
 the results.
 }
 \description{
-TRAMO model, pre-adjustment in TRAMO-SEATS
+allows to model the series with a Reg-Arima model, estimate outlier,
+calendar or other regression effects and produce forecasts
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
+
 y <- rjd3toolkit::ABS$X0.2.09.10.M
 sp <- tramo_spec("trfull")
 sp <- add_outlier(sp,
     type = c("AO"), c("2015-01-01", "2010-01-01")
 )
+\donttest{
 tramo_fast(y, spec = sp)
+}
 sp <- set_transform(
     set_tradingdays(
         set_easter(sp, enabled = FALSE),
@@ -55,8 +59,13 @@ sp <- set_transform(
     ),
     fun = "None"
 )
+\donttest{
 tramo_fast(y, spec = sp)
+}
 sp <- set_outlier(sp, outliers.type = c("AO"))
+
+\donttest{
 tramo_fast(y, spec = sp)
+}
 \dontshow{\}) # examplesIf}
 }

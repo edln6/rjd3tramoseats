@@ -19,29 +19,34 @@ specification or a user-defined specification.}
 
 \item{nback}{number of last observations considered for the quality check.}
 
-\item{context}{the dictionnary of variables.}
+\item{context}{the dictionary of variables.}
 }
 \value{
 a \code{mts} object with 7 variables:
-\itemize{
-\item \code{actual} the actual data at the end of the series.
-\item \code{forecast} the forecast of the actual data at the end of the series.
-\item \code{error} the absolute errors (= observed - forecasts).
-\item \code{rel.error} relative errors ("scores") : ratios between the forecast
-errors and the standard deviation of the forecasts of the last observations
-(positive values mean under-estimation).
-\item \code{raw} the transformed series. More especially, if the chosen model implies
-a log-transformation, the values are obtained after a log-transformation.
-Other transformations, such leap year corrections or length-of periods corrections may also be used.
-\item \code{fraw} the forecast of the transformed series.
-\item \code{efraw} the absolute errors of the transformed series.
+
+\enumerate{
+\item \strong{actual}: the actual data at the end of the series;
+\item \strong{forecast}: the forecast of the actual data at the end of the
+series;
+\item \strong{error}: the absolute errors (= observed - forecasts);
+\item \strong{rel.error}: relative errors ("scores") : ratios between the
+forecast errors and the standard deviation of the forecasts of the last
+observations (positive values mean under-estimation);
+\item \strong{raw}: the transformed series. More especially, if the chosen
+model implies a log-transformation, the values are obtained after a
+log-transformation. Other transformations, such leap year corrections or
+length-of periods corrections may also be used;
+\item \strong{fraw}: the forecast of the transformed series.;
+\item \strong{efraw}: the absolute errors of the transformed series.
 }
 }
 \description{
 TRAMO for ERRORs (TERROR) controls the quality of the data by checking outliers at the end of the series
 }
 \examples{
-\dontshow{if (jversion >= 17) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+\donttest{
 terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
+}
 \dontshow{\}) # examplesIf}
 }

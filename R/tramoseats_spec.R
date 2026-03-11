@@ -12,13 +12,13 @@ NULL
 #'
 #' @param name the name of a predefined specification.
 #'
-#' @examplesIf jversion >= 17
+#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
 #' init_spec <- tramoseats_spec()
 #' init_spec <- tramo_spec()
 #' init_spec <- tramoseats_spec("rsa3")
 #' init_spec <- tramo_spec("tr3")
 #'
-#' @return an object of class `"JD3_TRAMOSEATS_SPEC"` (`tramoseats_spec()`) or
+#' @returns an object of class `"JD3_TRAMOSEATS_SPEC"` (`tramoseats_spec()`) or
 #' `"JD3_TRAMO_SPEC"` (`tramo_spec()`).
 #'
 #' @details
@@ -36,18 +36,19 @@ NULL
 #' }
 #'
 #' @seealso
-#' - To set the pre-processing parameters:
+#' \enumerate{
+#' \item To set the pre-processing parameters:
 #' [rjd3toolkit::set_arima()], [rjd3toolkit::set_automodel()],
 #' [rjd3toolkit::set_basic()], [rjd3toolkit::set_easter()],
 #' [rjd3toolkit::set_estimate()], [rjd3toolkit::set_outlier()],
 #' [rjd3toolkit::set_tradingdays()], [rjd3toolkit::set_transform()],
 #' [rjd3toolkit::add_outlier()], [rjd3toolkit::remove_outlier()],
 #' [rjd3toolkit::add_ramp()], [rjd3toolkit::remove_ramp()],
-#' [rjd3toolkit::add_usrdefvar()].
+#' [rjd3toolkit::add_usrdefvar()];
+#' \item To set the decomposition parameters: [set_seats()];
+#' \item To set the benchmarking parameters: [rjd3toolkit::set_benchmarking()].
+#' }
 #'
-#' - To set the decomposition parameters: [set_seats()].
-#'
-#' - To set the benchmarking parameters: [rjd3toolkit::set_benchmarking()].
 #' @name tramoseats_spec
 #' @rdname tramoseats_spec
 #' @export

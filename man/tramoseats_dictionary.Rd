@@ -2,13 +2,54 @@
 % Please edit documentation in R/tramoseats.R
 \name{tramoseats_dictionary}
 \alias{tramoseats_dictionary}
-\title{TRAMO-SEATS Dictionary}
+\alias{tramoseats_full_dictionary}
+\title{TRAMO-SEATS dictionary}
 \usage{
 tramoseats_dictionary()
+
+tramoseats_full_dictionary()
 }
 \value{
-A vector containing the names of all the available output objects (series, diagnostics, parameters).
+\code{tramoseats_dictionary()} returns a character vector containing the
+names of all output objects (series, diagnostics, parameters) available with
+the \code{tramoseats()} function, whereas \code{tramoseats_full_dictionary()} returns a
+\code{data.frame} with format and description, for all the output objects.
 }
 \description{
-TRAMO-SEATS Dictionary
+Functions to provide information for all output objects (series, diagnostics,
+parameters) available with \code{tramoseats()} function.
+}
+\details{
+These functions provide lists of output names (series, diagnostics,
+parameters) available with the \code{tramoseats()} function. These names can be
+used to generate customized outputs with the userdefined option of the
+\code{tramoseats()} function (see examples).
+The \code{tramoseats_full_dictionary} function provides additional information on
+object format and description.
+}
+\examples{
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+# Visualize the dictionary
+print(tramoseats_dictionary())
+summary(tramoseats_dictionary())
+
+# first 10 lines
+head(tramoseats_full_dictionary(), n = 10)
+# For more structured information call `View(tramoseats_full_dictionary())`
+
+# Extract names of output of interest
+user_defined_output <- tramoseats_dictionary()[c(65, 95, 135)]
+user_defined_output
+
+# Generate the corresponding output in an estimation
+y <- rjd3toolkit::ABS$X0.2.09.10.M
+\donttest{
+m <- tramoseats(y, "rsafull", userdefined=user_defined_output)
+
+# Retrieve user defined output
+tail(m$user_defined$ylin)
+m$user_defined$residuals.kurtosis
+m$user_defined$sa_f
+}
+\dontshow{\}) # examplesIf}
 }

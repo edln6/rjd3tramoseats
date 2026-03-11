@@ -1,12 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `rjd3tramoseats` <a href="https://rjdverse.github.io/rjd3tramoseats/"><img src="man/figures/logo.png" align="right" height="150" style="float:right; height:150px;"/></a>
+# {rjd3tramoseats} <a href="https://rjdverse.github.io/rjd3tramoseats/"><img src="man/figures/logo.png" align="right" height="150" style="float:right; height:150px;"/></a>
 
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/rjd3tramoseats)](https://CRAN.R-project.org/package=rjd3tramoseats)
+status](https://www.r-pkg.org/badges/version/rjd3tramoseats)](https://cran.r-project.org/package=rjd3tramoseats)
+[![Mentioned in Awesome Official
+Statistics](https://awesome.re/mentioned-badge.svg)](https://github.com/SNStatComp/awesome-official-statistics-software)
 
 [![R-CMD-check](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/R-CMD-check.yaml)
 [![lint](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/lint.yaml/badge.svg)](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/lint.yaml)
@@ -15,8 +17,8 @@ status](https://www.r-pkg.org/badges/version/rjd3tramoseats)](https://CRAN.R-pro
 built](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rjdverse/rjd3tramoseats/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
-rjd3tramoseats offers full access to options and outputs of TRAMO-SEATS
-(`rjd3tramoseats::tramoseats()`), including TRAMO modelling
+{rjd3tramoseats} offers full access to options and outputs of
+TRAMO-SEATS (`rjd3tramoseats::tramoseats()`), including TRAMO modelling
 (`rjd3tramoseats::tramo()`) and SEATS decomposition
 (`rjd3tramoseats::seats_decompose()`).
 
@@ -38,31 +40,19 @@ following functions:
 
 ## Installation
 
-Running rjd3 packages requires **Java 17 or higher**. How to set up such
+Running rjd3 packages requires **Java 21 or higher**. How to set up such
 a configuration in R is explained
 [here](https://jdemetra-new-documentation.netlify.app/#Rconfig)
 
-### Latest release
+**🎉 {rjd3tramoseats} is now available on CRAN! 🎉**
 
-To get the current stable version (from the latest release):
-
-- From GitHub:
+To install it, you have to launch the following command line:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("rjdverse/rjd3toolkit@*release")
-remotes::install_github("rjdverse/rjd3tramoseats@*release")
+install.packages("rjd3tramoseats")
 ```
 
-- From [r-universe](https://rjdverse.r-universe.dev/rjd3tramoseats):
-
-``` r
-install.packages("rjd3tramoseats", repos = c("https://rjdverse.r-universe.dev", "https://cloud.r-project.org"))
-```
-
-### Development version
-
-You can install the development version of **rjd3tramoseats** from
+To get the current development version of **{rjd3tramoseats}** from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -89,12 +79,12 @@ summary(ts_model$result$preprocessing) # Summary of tramo model
 #> 
 #> Regression model:
 #>                   Estimate Std. Error T-stat Pr(>|t|)    
-#> monday          -0.0109446  0.0034805 -3.145 0.001788 ** 
-#> tuesday          0.0048940  0.0035307  1.386 0.166481    
-#> wednesday        0.0001761  0.0034970  0.050 0.959867    
-#> thursday         0.0132928  0.0035330  3.763 0.000193 ***
-#> friday          -0.0024801  0.0035383 -0.701 0.483748    
-#> saturday         0.0153509  0.0035171  4.365 1.62e-05 ***
+#> mon             -0.0109446  0.0034805 -3.145 0.001788 ** 
+#> tue              0.0048940  0.0035307  1.386 0.166481    
+#> wed              0.0001761  0.0034970  0.050 0.959867    
+#> thu              0.0132928  0.0035330  3.763 0.000193 ***
+#> fri             -0.0024801  0.0035383 -0.701 0.483748    
+#> sat              0.0153509  0.0035171  4.365 1.62e-05 ***
 #> lp               0.0410667  0.0101178  4.059 5.94e-05 ***
 #> easter           0.0503888  0.0072698  6.931 1.69e-11 ***
 #> AO (2000-06-01)  0.1681662  0.0299743  5.610 3.78e-08 ***
@@ -108,7 +98,7 @@ summary(ts_model$result$preprocessing) # Summary of tramo model
 plot(ts_model) # Plot of the final decomposition
 ```
 
-<img src="man/figures/README-ts-final-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-ts-final-1.png" alt="" style="display: block; margin: auto;" />
 
 To get the final components you can use the function
 `rjd3toolkit::sa_decomposition()`:
