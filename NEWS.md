@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.7.1] - 2026-03-11
+
+
 ### Added
 
 * Classes to `tramoseats_dictionary()` and `tramoseats_full_dictionary()`
@@ -66,7 +69,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.1.0] - 2023-08-11
 
-[Unreleased]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.6.0...HEAD
+[Unreleased]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.7.1...HEAD
+[3.7.1]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.6.0...v3.7.1
 [3.6.0]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.5.2...v3.6.0
 [3.5.2]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.5.1...v3.5.2
 [3.5.1]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.5.0...v3.5.1
