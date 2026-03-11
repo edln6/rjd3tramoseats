@@ -1,3 +1,11 @@
+
+## Submission of {rjd3tramoseats} v3.7.1 - 2026-03-11
+
+### Changes
+
+* New JARS linked to JDemetra+ [v3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
+
+
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note
