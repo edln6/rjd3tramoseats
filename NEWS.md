@@ -11,6 +11,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 * Classes to `tramoseats_dictionary()` and `tramoseats_full_dictionary()`
 
+### Changed
+
+* New Jars [v3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
+
 
 ## [3.6.0] - 2025-11-21
 
@@ -30,7 +34,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * New JARS
 * Update pkgdown appearance
 
+
 ## [3.5.1] - 2025-04-10
+
 
 ## [3.5.0] - 2025-04-10
 

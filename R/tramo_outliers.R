@@ -19,8 +19,9 @@ NULL
 #' @param clean Clean missing values at the beginning/end of the series. Regression variables are automatically resized, if need be.
 #'
 #' @returns a `"JD3_REGARIMA_OUTLIERS"` object.
+#' @importFrom rjd3toolkit td
 #'
-#' @examplesIf current_java_version >= minimal_java_version
+#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
 #' tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)
 #' @export
 tramo_outliers <- function(y, order = c(0L, 1L, 1L), seasonal = c(0L, 1L, 1L), mean = FALSE,
