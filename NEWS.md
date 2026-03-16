@@ -7,8 +7,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [3.7.1] - 2026-03-11
 
+## [3.7.1] - 2026-03-11
 
 ### Added
 
@@ -16,7 +16,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-* New Jars [v3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
+* New JARS related to version [3.7.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.7.1)
 
 
 ## [3.6.0] - 2025-11-21
@@ -27,21 +27,29 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-* New JARS
+* New JARS related to version [3.6.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.6.0)
 
 
 ## [3.5.2] - 2025-06-17
 
 ### Changed
 
-* New JARS
 * Update pkgdown appearance
+* New JARS related to version [3.5.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.1)
 
 
 ## [3.5.1] - 2025-04-10
 
+### Fixed
+
+* Error with the remote branch from {rjd3toolkit}
+
 
 ## [3.5.0] - 2025-04-10
+
+### Changed
+
+* New JARS related to version [3.5.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.5.0)
 
 ### Removed
 
@@ -52,22 +60,43 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-* New java libraries
+* New JARS related to version [3.3.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.3.0)
 
 
 ## [3.2.3] - 2024-07-12
 
 ### Changed
 
-* New .jar
+* New JARS related to version [3.2.3](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.3)
+
 
 ## [3.2.2] - 2024-03-15
 
+### Changed
+
+* New JARS related to version [3.2.2](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.2)
+
+
 ## [3.2.1] - 2023-12-12
+
+### Changed
+
+* New JARS related to version [3.2.1](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.1)
+
 
 ## [3.2.0] - 2023-11-24
 
+### Changed
+
+* New JARS related to version [3.2.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.2.0)
+
+
 ## [3.1.0] - 2023-08-11
+
+### Added
+
+* New JARS related to version [3.1.0](https://github.com/jdemetra/jdplus-main/releases/tag/v3.1.0)
+
 
 [Unreleased]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.7.1...HEAD
 [3.7.1]: https://github.com/rjdverse/rjd3tramoseats/compare/v3.6.0...v3.7.1
