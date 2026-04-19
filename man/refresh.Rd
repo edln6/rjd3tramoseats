@@ -33,28 +33,27 @@ can be obtained as an output of \code{tramoseats_spec} or \code{tramo_spec} and 
 see \code{tramoseats_spec} documentation}
 
 \item{refspec}{reference specification
-By default \code{"RG4c"} or \code{"tr5"} specification.
+By default \code{"rsa4"} or \code{"tr5"} specification.
 Object of class "JD3_tramoseats_SPEC" or "JD3_tramo_SPEC",
 can be obtained as an output of \code{tramoseats_spec} or \code{tramo_spec} and customised with \code{set_} functions,
 see \code{tramoseats_spec} documentation}
 
 \item{policy}{refresh policy to apply (see details)}
 
-\item{period, start, end}{additional parameters used to specify the span on
-which additive outliers (AO) are introduced when \code{policy = "Current"} or to
-specify the span on which outliers will be re-detected when
-\code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}, in this
-last case \code{end} is unused.
-
-If \code{start} is not specified, outliers will be re-identified on the whole
-series.
-Span definition: \code{period}: numeric, number of observations in a year
-(12, 4...).
+\item{period, start, end}{additional parameters used to specify the span
+when \code{policy = "Current"} or \code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}
+\code{period}: numeric, number of observations in a year (12, 4...), compulsory, if false or missing,
+re-estimation with refreshed specification won't work.
+When \code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}
+\code{start} has to be specified as the date from which outliers will be re-identified
+\code{end} is not used, if specified it will be ignored.
+When \code{policy = "Current"}
+\code{start} and \code{end} have to be both specified and indicate the span on which
+additive outliers (AO) will be added.
+Span definition:
 \code{start} and \code{end}: defined as arrays of two elements: year and
-first period (for example, \code{period = 12} and \code{c(1980, 1)} stands for January
-1980)
-The dates corresponding to \code{start} and \code{end} are included in the span
-definition.}
+first period (for example, \code{period = 12} and \code{start=c(1980, 1)} stands for January
+1980)}
 }
 \value{
 a new specification, an object of class \code{"JD3_tramoseats_SPEC"} or
@@ -106,6 +105,11 @@ SEATS and Benchmarking part parameters are entirely reset to values in the refer
 \examples{
 \dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
+y <- rjd3toolkit::ABS$X0.2.08.10.M
+# raw series for first estimation
+y_raw <- window(y, end = c(2016, 12))
+# raw series for second (refreshed) estimation: new data points
+y_new <- window(y, end = c(2017, 6))
 \donttest{
 # Example 1 : refresh mechanism
 # Create reference spec, here the default "rsa3"
@@ -164,11 +168,6 @@ tramoseats_spec_ref <- tramoseats_refresh(spec= user_spec,
 # print(tramoseats_spec_ref)
 # all user defined parameters are reset and replaced with "rsa3" parameters,
 # Example 2 : practical re-estimation use-case
-y <- rjd3toolkit::ABS$X0.2.08.10.M
-# raw series for first estimation
-y_raw <- window(y, end = c(2016, 12))
-# raw series for second (refreshed) estimation: new data points
-y_new <- window(y, end = c(2017, 6))
 sa_tramoseats <- tramoseats(y_raw, user_spec)
 # refreshing the specification resulting from the first estimation
 # to partially adapt to new data
@@ -201,14 +200,14 @@ spec_tramoseats_ref <- tramoseats_refresh(spec_to_refresh,
                            start = c(2017, 1),
                            end = end(y_new)
 )
+sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 }
 # Points from January 2017 (included) until the end of the series will be
 # treated as Additive Outliers, the previous reg-Arima model being otherwise
 # kept fixed 2nd estimation with refreshed specification
-sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 \dontshow{\}) # examplesIf}
 }
 \references{
 More information on revision policies in JDemetra+ documentation:
-\url{https://jdemetra-new-documentation.netlify.app/a-rev-policies}
+\url{https://doc.jdemetra.org/a-rev-policies}
 }
