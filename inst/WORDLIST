@@ -1,5 +1,7 @@
 AO
 Arima
+AutoRegressive
+Benchmarking
 Burman
 CMD
 Changelog
@@ -25,6 +27,7 @@ UCARIMA
 arima
 backasts
 benchmarking
+customised
 decomposable
 docstrings
 efraw

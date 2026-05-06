@@ -58,7 +58,7 @@
 #' (negative values). Default `bcasts` = 0. Default `fcasts` = 0.
 #' @param bias TODO.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' init_spec <- tramoseats_spec("rsafull")
 #' new_spec <- set_seats(init_spec,
 #'     approximation = "Legacy",
