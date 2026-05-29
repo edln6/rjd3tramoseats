@@ -56,7 +56,9 @@
 #' @param bcasts,fcasts numeric: the number of backasts (`bcasts`) or forecasts
 #' (`fcasts`) used in the decomposition in periods (positive values) or years
 #' (negative values). Default `bcasts` = 0. Default `fcasts` = 0.
-#' @param bias TODO.
+#' @param bias boolean. If `TRUE` (default) and decomposition is multiplicative a correction is applied
+#' when computing final components (S, T, I) in level from components estimated in log. Average of S (on complete years)
+#' and I (on the whole series) is set to 1, the correction is allocated to T.
 #'
 #' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
 #' init_spec <- tramoseats_spec("rsafull")
