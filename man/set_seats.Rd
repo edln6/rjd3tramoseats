@@ -77,7 +77,9 @@ numerically unstable when some roots of the MA polynomial are near 1;
 roots in MA.
 }}
 
-\item{bias}{TODO.}
+\item{bias}{boolean. If \code{TRUE} (default) and decomposition is multiplicative a correction is applied
+when computing final components (S, T, I) in level from components estimated in log. Average of S (on complete years)
+and I (on the whole series) is set to 1, the correction is allocated to T.}
 }
 \value{
 an object of class  \code{"JD3_TRAMOSEATS_SPEC"}.
