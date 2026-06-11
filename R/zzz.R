@@ -16,6 +16,8 @@ NULL
         rjd3jars::reload_dictionaries()
     }
 
+    assign("providers", list(), rjd3toolkit::.jd3_env)
+	
     proto.dir <- system.file("proto", package = pkgname)
     RProtoBuf::readProtoFiles2(protoPath = proto.dir)
 
