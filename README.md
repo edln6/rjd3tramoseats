@@ -26,13 +26,23 @@ A specification can be created with `rjd3tramoseats::tramo_spec()` or
 `rjd3tramoseats::tramoseats_spec()` and modified with the
 following functions:
 
-- for pre-processing: `rjd3tramoseats::set_arima()`,
-  `rjd3tramoseats::set_automodel()`, `rjd3tramoseats::set_basic()`,
-  `rjd3tramoseats::set_easter()`, `rjd3tramoseats::set_estimate()`,
-  `rjd3tramoseats::set_outlier()`, `rjd3tramoseats::set_tradingdays()`,
-  `rjd3tramoseats::set_transform()`, `rjd3tramoseats::add_outlier()`,
-  `rjd3tramoseats::remove_outlier()`, `rjd3tramoseats::add_ramp()`,
-  `rjd3tramoseats::remove_ramp()`, `rjd3tramoseats::add_usrdefvar()`;
+- for pre-processing: `rjd3toolkit::set_arima()`,
+                      `rjd3toolkit::set_automodel()`,
+                      `rjd3toolkit::set_basic()`,
+                      `rjd3toolkit::set_easter()`,
+                      `rjd3toolkit::set_estimate()`,
+                      `rjd3toolkit::set_outlier()`,
+                      `rjd3toolkit::set_tradingdays()`,
+                      `rjd3toolkit::set_transform()`,
+                      `rjd3toolkit::add_outlier()`,
+                      `rjd3toolkit::remove_outlier()`,
+                      `rjd3toolkit::add_ramp()`,
+                      `rjd3toolkit::remove_ramp()`,
+                      `rjd3toolkit::add_usrdefvar()`;
+
+- for decomposition: `rjd3x13::set_x11()`;
+
+- for benchmarking: `rjd3toolkit::set_benchmarking()`.
 
 - for decomposition: `rjd3tramoseats::set_seats()`;
 
