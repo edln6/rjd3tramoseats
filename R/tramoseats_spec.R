@@ -12,7 +12,7 @@ NULL
 #'
 #' @param name the name of a predefined specification.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' init_spec <- tramoseats_spec()
 #' init_spec <- tramo_spec()
 #' init_spec <- tramoseats_spec("rsa3")
@@ -113,7 +113,8 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
     b <- pspec$basic
     basic <- list(
         span = rjd3toolkit::.p2r_span(b$span),
-        preliminaryCheck = b$preliminary_check
+        preliminaryCheck = b$preliminary_check,
+        frequency = b$annual_frequency
     )
     t <- pspec$transform
     transform_list <- list(
@@ -199,8 +200,11 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 .r2p_spec_tramo <- function(rspec) {
     pspec <- tramoseats.TramoSpec$new()
     # BIAS
+    freq<--1
+    if (! is.null(rspec$basic$frequency)) freq<-rspec$basic$frequency
     pspec$basic$span <- rjd3toolkit::.r2p_span(rspec$basic$span)
     pspec$basic$preliminary_check <- rspec$basic$preliminaryCheck
+    pspec$basic$annual_frequency <- freq
 
     # TRANSFORM
     pspec$transform$transformation <- rjd3toolkit::.enum_of(modelling.Transformation, rspec$transform$fn, "FN")

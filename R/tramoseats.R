@@ -20,7 +20,7 @@ NULL
 #' specification, while `tramo_fast()` is a faster function that only returns
 #' the results.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' library("rjd3toolkit")
 #'
 #' y <- rjd3toolkit::ABS$X0.2.09.10.M
@@ -134,7 +134,7 @@ tramo_fast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4",
 #' in other packages (use [rjd3toolkit::dictionary()] to get the list of
 #' variables and [rjd3toolkit::result()] to get a specific variable).
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' library("rjd3toolkit")
 #'
 #' sp <- tramoseats_spec("rsafull")
@@ -343,7 +343,7 @@ tramoseats_fast <- function(ts, spec = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa
 #' More information on revision policies in JDemetra+ documentation:
 #' \url{https://doc.jdemetra.org/a-rev-policies}
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' library("rjd3toolkit")
 #' y <- rjd3toolkit::ABS$X0.2.08.10.M
 
@@ -580,7 +580,7 @@ forecast_names <- c("forecast", "error", "fraw", "efraw")
 #' \item \strong{efraw}: the absolute errors of the transformed series.
 #' }
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' \donttest{
 #' terror(rjd3toolkit::ABS$X0.2.09.10.M, nback = 2)
 #' }
@@ -631,7 +631,7 @@ terror <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr
 #' - `fraw` the forecast of the transformed series.
 #' - `efraw` the standard deviation of the forecast of the transformed series.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' \donttest{
 #' tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
 #' }
@@ -692,7 +692,7 @@ tramo_forecast <- function(ts, spec = c("trfull", "tr0", "tr1", "tr2", "tr3", "t
 #' The \code{tramoseats_full_dictionary} function provides additional information on
 #' object format and description.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version()
 #' # Visualize the dictionary
 #' print(tramoseats_dictionary())
 #' summary(tramoseats_dictionary())

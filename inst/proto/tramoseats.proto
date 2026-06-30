@@ -7,7 +7,7 @@ import public "sa.proto";
 package tramoseats;
 
 option java_multiple_files = true;
-option java_package = "demetra.tramoseats.io.protobuf";
+option java_package = "jdplus.tramoseats.base.protobuf";
 option java_outer_classname = "TramoSeatsProtos";
 
 enum SeatsApproximation {
@@ -61,6 +61,7 @@ message TramoSpec {
     message BasicSpec{
 	  jd3.TimeSelector span = 1;
 	  bool preliminary_check = 3;
+      int32 annual_frequency = 4;
     }
     
     message TransformSpec{
