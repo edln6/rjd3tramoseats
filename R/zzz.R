@@ -65,9 +65,9 @@ NULL
 #'
 #' @examples
 #' tramoseats_option("test", "DUMMY")
-tramoseats_option<-function(name, obj){
-    options<-rjd3toolkit::.jd3_env$tramoseats
-    options[[name]]<-obj
+tramoseats_option <- function(name, obj) {
+    options <- rjd3toolkit::.jd3_env$tramoseats
+    options[[name]] <- obj
     assign("tramoseats", options, rjd3toolkit::.jd3_env)
     invisible()
 }
@@ -82,9 +82,7 @@ tramoseats_option<-function(name, obj){
 #' @examples
 #' tramoseats_option("test", "DUMMY")
 #' get_tramoseats_option("test")
-get_tramoseats_option<-function(name){
-    options<-rjd3toolkit::.jd3_env$tramoseats
-    return (options[[name]])
+get_tramoseats_option <- function(name) {
+    options <- rjd3toolkit::.jd3_env$tramoseats
+    return(options[[name]])
 }
-
-

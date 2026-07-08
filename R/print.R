@@ -1,12 +1,16 @@
 #' @importFrom stats printCoefmat end time
 #' @importFrom utils capture.output
 #' @noRd
-print_diagnostics <- function(x, digits = max(3L, getOption("digits") - 3L),
-                              ...) {
+print_diagnostics <- function(
+    x,
+    digits = max(3L, getOption("digits") - 3L),
+    ...
+) {
     variance_decomposition <- x$variance_decomposition
     residual_tests <- x$residual_tests
 
-    cat("Relative contribution of the components to the stationary",
+    cat(
+        "Relative contribution of the components to the stationary",
         "portion of the variance in the original series,",
         "after the removal of the long term trend (in %)",
         sep = "\n"
@@ -29,9 +33,11 @@ print_diagnostics <- function(x, digits = max(3L, getOption("digits") - 3L),
         paste0(
             " ",
             capture.output(
-                printCoefmat(residual_tests[, "P.value", drop = FALSE],
+                printCoefmat(
+                    residual_tests[, "P.value", drop = FALSE],
                     digits = digits,
-                    na.print = "NA", ...
+                    na.print = "NA",
+                    ...
                 )
             )
         ),
@@ -54,7 +60,13 @@ print.JD3_SEATS <- function(x, ...) {
         x$stochastics$sa$data,
         x$stochastics$i$data
     )
-    colnames(tableau) <- c("Series", "Seasonally adjusted", "Trend", "Seasonal", "Irregular")
+    colnames(tableau) <- c(
+        "Series",
+        "Seasonally adjusted",
+        "Trend",
+        "Seasonal",
+        "Irregular"
+    )
 
     cat("Last values\n")
     print(utils::tail(stats::.preformat.ts(tableau)))
@@ -63,9 +75,12 @@ print.JD3_SEATS <- function(x, ...) {
 }
 
 #' @export
-print.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L),
-                                       summary_info = getOption("summary_info"),
-                                       ...) {
+print.JD3_TRAMOSEATS_RSLTS <- function(
+    x,
+    digits = max(3L, getOption("digits") - 3L),
+    summary_info = getOption("summary_info"),
+    ...
+) {
     cat("Model: TRAMO-SEATS", "\n", sep = "")
     print(x$preprocessing, digits = digits, summary_info = FALSE, ...)
     if (summary_info) {
@@ -92,7 +107,12 @@ summary.JD3_TRAMOSEATS_OUTPUT <- function(object, ...) {
 }
 
 #' @export
-print.summary.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("digits") - 3L), signif.stars = getOption("show.signif.stars"), ...) {
+print.summary.JD3_TRAMOSEATS_RSLTS <- function(
+    x,
+    digits = max(3L, getOption("digits") - 3L),
+    signif.stars = getOption("show.signif.stars"),
+    ...
+) {
     cat("Model: TRAMO-SEATS\n")
     print(x$preprocessing, digits = digits, signif.stars = signif.stars, ...)
     cat("\n", "Decomposition", "\n", sep = "")
@@ -104,8 +124,12 @@ print.summary.JD3_TRAMOSEATS_RSLTS <- function(x, digits = max(3L, getOption("di
     return(invisible(x))
 }
 #' @export
-print.JD3_TRAMOSEATS_OUTPUT <- function(x, digits = max(3L, getOption("digits") - 3L), summary_info = getOption("summary_info"),
-                                        ...) {
+print.JD3_TRAMOSEATS_OUTPUT <- function(
+    x,
+    digits = max(3L, getOption("digits") - 3L),
+    summary_info = getOption("summary_info"),
+    ...
+) {
     series_span <- x$result_spec$tramo$basic$span
     model_span <- x$result_spec$tramo$estimate$span
 
@@ -122,19 +146,28 @@ print.JD3_TRAMOSEATS_OUTPUT <- function(x, digits = max(3L, getOption("digits") 
 }
 
 #' @export
-plot.JD3_TRAMOSEATS_RSLTS <- function(x, first_date = NULL, last_date = NULL,
-                                      type_chart = c("sa-trend", "seas-irr"),
-                                      caption = c(
-                                          "sa-trend" = "Y, Sa, trend",
-                                          "seas-irr" = "Sea., irr."
-                                      )[type_chart],
-                                      colors = c(
-                                          y = "#F0B400", t = "#1E6C0B", sa = "#155692",
-                                          s = "#1E6C0B", i = "#155692"
-                                      ),
-                                      ...) {
-    plot(rjd3toolkit::sa_decomposition(x),
-        first_date = first_date, last_date = last_date,
+plot.JD3_TRAMOSEATS_RSLTS <- function(
+    x,
+    first_date = NULL,
+    last_date = NULL,
+    type_chart = c("sa-trend", "seas-irr"),
+    caption = c(
+        "sa-trend" = "Y, Sa, trend",
+        "seas-irr" = "Sea., irr."
+    )[type_chart],
+    colors = c(
+        y = "#F0B400",
+        t = "#1E6C0B",
+        sa = "#155692",
+        s = "#1E6C0B",
+        i = "#155692"
+    ),
+    ...
+) {
+    plot(
+        rjd3toolkit::sa_decomposition(x),
+        first_date = first_date,
+        last_date = last_date,
         type_chart = type_chart,
         caption = caption,
         colors = colors,
@@ -142,19 +175,28 @@ plot.JD3_TRAMOSEATS_RSLTS <- function(x, first_date = NULL, last_date = NULL,
     )
 }
 #' @export
-plot.JD3_TRAMOSEATS_OUTPUT <- function(x, first_date = NULL, last_date = NULL,
-                                       type_chart = c("sa-trend", "seas-irr"),
-                                       caption = c(
-                                           "sa-trend" = "Y, Sa, trend",
-                                           "seas-irr" = "Sea., irr."
-                                       )[type_chart],
-                                       colors = c(
-                                           y = "#F0B400", t = "#1E6C0B", sa = "#155692",
-                                           s = "#1E6C0B", i = "#155692"
-                                       ),
-                                       ...) {
-    plot(x$result,
-        first_date = first_date, last_date = last_date,
+plot.JD3_TRAMOSEATS_OUTPUT <- function(
+    x,
+    first_date = NULL,
+    last_date = NULL,
+    type_chart = c("sa-trend", "seas-irr"),
+    caption = c(
+        "sa-trend" = "Y, Sa, trend",
+        "seas-irr" = "Sea., irr."
+    )[type_chart],
+    colors = c(
+        y = "#F0B400",
+        t = "#1E6C0B",
+        sa = "#155692",
+        s = "#1E6C0B",
+        i = "#155692"
+    ),
+    ...
+) {
+    plot(
+        x$result,
+        first_date = first_date,
+        last_date = last_date,
         type_chart = type_chart,
         caption = caption,
         colors = colors,
@@ -169,11 +211,16 @@ diagnostics.JD3_TRAMOSEATS_RSLTS <- function(x, ...) {
         return(NULL)
     }
     variance_decomposition <- x$diagnostics$vardecomposition
-    variance_decomposition <- matrix(unlist(variance_decomposition),
+    variance_decomposition <- matrix(
+        unlist(variance_decomposition),
         ncol = 1,
         dimnames = list(names(variance_decomposition), "Component")
     )
-    residual_tests <- x$diagnostics[grep("test", names(x$diagnostics), fixed = TRUE)]
+    residual_tests <- x$diagnostics[grep(
+        "test",
+        names(x$diagnostics),
+        fixed = TRUE
+    )]
     residual_tests <- data.frame(
         Statistic = sapply(residual_tests, function(test) test[["value"]]),
         P.value = sapply(residual_tests, function(test) test[["pvalue"]]),
@@ -196,13 +243,16 @@ diagnostics.JD3_TRAMOSEATS_OUTPUT <- function(x, ...) {
 print.JD3_TRAMO_SPEC <- function(x, ...) {
     cat("Specification", "\n", sep = "")
 
-
     cat("\n", "Series", "\n", sep = "")
 
     cat("Serie span: ")
     print(x$basic$span)
-    cat("Preliminary Check: ", ifelse(x$basic$preliminaryCheck, "Yes", "No"), "\n", sep = "")
-
+    cat(
+        "Preliminary Check: ",
+        ifelse(x$basic$preliminaryCheck, "Yes", "No"),
+        "\n",
+        sep = ""
+    )
 
     cat("\n", "Estimate", "\n", sep = "")
 
@@ -212,13 +262,11 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
     cat("Exact ML: ", ifelse(x$estimate$ml, "Yes", "No"), "\n", sep = "")
     cat("Unit root limit: ", x$estimate$ubp, "\n", sep = "")
 
-
     cat("\n", "Transformation", "\n", sep = "")
 
     cat("Function: ", x$transform$fn, "\n", sep = "")
     cat("AIC difference: ", x$transform$aicdiff, "\n", sep = "")
     cat("Adjust: ", x$transform$adjust, "\n", sep = "")
-
 
     cat("\n", "Regression", "\n", sep = "")
 
@@ -229,7 +277,12 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
         cat("No calendar regressor", "\n", sep = "")
     } else {
         cat("Calendar regressor: ", x$regression$td$td, "\n", sep = "")
-        cat("with Leap Year: ", ifelse(x$regression$td$lp == "LEAPYEAR", "Yes", "No"), "\n", sep = "")
+        cat(
+            "with Leap Year: ",
+            ifelse(x$regression$td$lp == "LEAPYEAR", "Yes", "No"),
+            "\n",
+            sep = ""
+        )
         cat("AutoAdjust: ", x$regression$td$autoadjust, "\n", sep = "")
         cat("Test: ", x$regression$td$test, "\n", sep = "")
     }
@@ -238,15 +291,37 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
     cat("Easter: ", x$regression$easter$type, "\n", sep = "")
     cat("\n")
 
-    cat("Pre-specified outliers: ", length(x$regression$outliers), "\n", sep = "")
+    cat(
+        "Pre-specified outliers: ",
+        length(x$regression$outliers),
+        "\n",
+        sep = ""
+    )
     if (!is.null(x$regression$outliers) && length(x$regression$outliers) > 0) {
         for (out in x$regression$outliers) {
             cat("\t-", out$name, "\n")
         }
     }
-    cat("Ramps: ", ifelse(!is.null(x$regression$ramps) && length(x$regression$ramps) > 0, "Yes", "No"), "\n", sep = "")
-    cat("User-defined variables: ", ifelse(!is.null(x$regression$users) && length(x$regression$users) > 0, "Yes", "No"), "\n", sep = "")
-
+    cat(
+        "Ramps: ",
+        ifelse(
+            !is.null(x$regression$ramps) && length(x$regression$ramps) > 0,
+            "Yes",
+            "No"
+        ),
+        "\n",
+        sep = ""
+    )
+    cat(
+        "User-defined variables: ",
+        ifelse(
+            !is.null(x$regression$users) && length(x$regression$users) > 0,
+            "Yes",
+            "No"
+        ),
+        "\n",
+        sep = ""
+    )
 
     cat("\n", "Outliers", "\n", sep = "")
 
@@ -275,11 +350,25 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
             cat("Outliers type: ", toString(detected_outliers), "\n", sep = "")
         }
 
-        cat("Critical value: ", ifelse(x$outlier$va == 0, "0 (Auto)", x$outlier$va), "\n", sep = "")
-        cat("TC rate: ", ifelse(x$outlier$tcrate == 0.7, "0,7 (Auto)", x$outlier$tcrate), "\n", sep = "")
-        cat("EML estimation: ", ifelse(x$outlier$ml, "Yes", "No"), "\n", sep = "")
+        cat(
+            "Critical value: ",
+            ifelse(x$outlier$va == 0, "0 (Auto)", x$outlier$va),
+            "\n",
+            sep = ""
+        )
+        cat(
+            "TC rate: ",
+            ifelse(x$outlier$tcrate == 0.7, "0,7 (Auto)", x$outlier$tcrate),
+            "\n",
+            sep = ""
+        )
+        cat(
+            "EML estimation: ",
+            ifelse(x$outlier$ml, "Yes", "No"),
+            "\n",
+            sep = ""
+        )
     }
-
 
     cat("\n", "ARIMA", "\n", sep = "")
 
@@ -293,7 +382,6 @@ print.JD3_TRAMO_SPEC <- function(x, ...) {
 #' @export
 print.JD3_SEATS_SPEC <- function(x, ...) {
     cat("Specification SEATS", "\n", sep = "")
-
 
     cat("Approximation mode: ", x$approximation, "\n", sep = "")
     cat("MA unit root boundary: ", x$xl, "\n", sep = "")
@@ -317,7 +405,12 @@ print.JD3_TRAMOSEATS_SPEC <- function(x, ...) {
         cat("Target: ", x$benchmarking$target, "\n", sep = "")
         cat("Lambda: ", x$benchmarking$lambda, "\n", sep = "")
         cat("Rho: ", x$benchmarking$rho, "\n", sep = "")
-        cat("Use forecast: ", ifelse(x$benchmarking$forecast, "Yes", "No"), "\n", sep = "")
+        cat(
+            "Use forecast: ",
+            ifelse(x$benchmarking$forecast, "Yes", "No"),
+            "\n",
+            sep = ""
+        )
     } else {
         cat("Is enabled: No\n")
     }

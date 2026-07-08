@@ -24,8 +24,21 @@ NULL
 #' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)
 #' @export
-tramo_outliers <- function(y, order = c(0L, 1L, 1L), seasonal = c(0L, 1L, 1L), mean = FALSE,
-                           X = NULL, X.td = NULL, ao = TRUE, ls = TRUE, tc = FALSE, so = FALSE, cv = 0, ml = FALSE, clean = FALSE) {
+tramo_outliers <- function(
+    y,
+    order = c(0L, 1L, 1L),
+    seasonal = c(0L, 1L, 1L),
+    mean = FALSE,
+    X = NULL,
+    X.td = NULL,
+    ao = TRUE,
+    ls = TRUE,
+    tc = FALSE,
+    so = FALSE,
+    cv = 0,
+    ml = FALSE,
+    clean = FALSE
+) {
     if (!is.ts(y)) {
         stop("y must be a time series", call. = FALSE)
     }
@@ -34,11 +47,22 @@ tramo_outliers <- function(y, order = c(0L, 1L, 1L), seasonal = c(0L, 1L, 1L), m
         X <- cbind(X, td)
     }
 
-
     jtramo <- .jcall(
-        "jdplus/tramoseats/base/r/TramoOutliersDetection", "Ljdplus/tramoseats/base/r/TramoOutliersDetection$Results;", "process", rjd3toolkit::.r2jd_tsdata(y),
-        as.integer(order), as.integer(seasonal), mean, rjd3toolkit::.r2jd_matrix(X),
-        ao, ls, tc, so, cv, ml, clean
+        "jdplus/tramoseats/base/r/TramoOutliersDetection",
+        "Ljdplus/tramoseats/base/r/TramoOutliersDetection$Results;",
+        "process",
+        rjd3toolkit::.r2jd_tsdata(y),
+        as.integer(order),
+        as.integer(seasonal),
+        mean,
+        rjd3toolkit::.r2jd_matrix(X),
+        ao,
+        ls,
+        tc,
+        so,
+        cv,
+        ml,
+        clean
     )
     model <- list(
         y = rjd3toolkit::.proc_ts(jtramo, "y"),

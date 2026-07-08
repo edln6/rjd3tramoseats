@@ -17,7 +17,12 @@ NULL
     if (is.jnull(jrslts)) {
         return(NULL)
     }
-    q_obj <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[B", "toBuffer", jrslts)
+    q_obj <- .jcall(
+        "jdplus/tramoseats/base/r/TramoSeats",
+        "[B",
+        "toBuffer",
+        jrslts
+    )
     rq <- RProtoBuf::read(tramoseats.TramoSeatsResults, q_obj)
     return(.p2r_tramoseats_rslts(rq))
 }
@@ -35,13 +40,17 @@ NULL
 }
 
 
-
 .p2r_seats_rslts <- function(p) {
     return(structure(
         list(
             seatsmodel = rjd3toolkit::.p2r_arima(p$seats_arima),
-            canonicaldecomposition = rjd3toolkit::.p2r_ucarima(p$canonical_decomposition),
-            stochastics = rjd3toolkit::.p2r_sa_decomposition(p$stochastics, TRUE)
+            canonicaldecomposition = rjd3toolkit::.p2r_ucarima(
+                p$canonical_decomposition
+            ),
+            stochastics = rjd3toolkit::.p2r_sa_decomposition(
+                p$stochastics,
+                TRUE
+            )
         ),
         class = "JD3_SEATS"
     ))

@@ -52,20 +52,40 @@ NULL
 #' @name tramoseats_spec
 #' @rdname tramoseats_spec
 #' @export
-tramo_spec <- function(name = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5")) {
+tramo_spec <- function(
+    name = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5")
+) {
     name <- gsub("rsa", "tr", tolower(name), fixed = TRUE)
-    name <- match.arg(name[1], choices = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5"))
-    jspec <- .jcall("jdplus/tramoseats/base/api/tramo/TramoSpec", "Ljdplus/tramoseats/base/api/tramo/TramoSpec;", "fromString", name)
+    name <- match.arg(
+        name[1],
+        choices = c("trfull", "tr0", "tr1", "tr2", "tr3", "tr4", "tr5")
+    )
+    jspec <- .jcall(
+        "jdplus/tramoseats/base/api/tramo/TramoSpec",
+        "Ljdplus/tramoseats/base/api/tramo/TramoSpec;",
+        "fromString",
+        name
+    )
     return(.jd2r_spec_tramo(jspec))
 }
 
 
 #' @rdname tramoseats_spec
 #' @export
-tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", "rsa4", "rsa5")) {
+tramoseats_spec <- function(
+    name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", "rsa4", "rsa5")
+) {
     name <- gsub("tr", "rsa", tolower(name), fixed = TRUE)
-    name <- match.arg(name[1], choices = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", "rsa4", "rsa5"))
-    jspec <- .jcall("jdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec", "Ljdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec;", "fromString", name)
+    name <- match.arg(
+        name[1],
+        choices = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", "rsa4", "rsa5")
+    )
+    jspec <- .jcall(
+        "jdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec",
+        "Ljdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec;",
+        "fromString",
+        name
+    )
     return(.jd2r_spec_tramoseats(jspec))
 }
 
@@ -84,14 +104,24 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 .r2jd_spec_tramo <- function(spec) {
     pspec <- .r2p_spec_tramo(spec)
     nq <- RProtoBuf::serialize(pspec, NULL)
-    nspec <- .jcall("jdplus/tramoseats/base/r/Tramo", "Ljdplus/tramoseats/base/api/tramo/TramoSpec;", "specOf", nq)
+    nspec <- .jcall(
+        "jdplus/tramoseats/base/r/Tramo",
+        "Ljdplus/tramoseats/base/api/tramo/TramoSpec;",
+        "specOf",
+        nq
+    )
     return(nspec)
 }
 
 #' @export
 #' @rdname jd3_utilities
 .jd2r_spec_tramoseats <- function(jspec) {
-    q_obj <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "[B", "toBuffer", jspec)
+    q_obj <- .jcall(
+        "jdplus/tramoseats/base/r/TramoSeats",
+        "[B",
+        "toBuffer",
+        jspec
+    )
     rq <- RProtoBuf::read(tramoseats.Spec, q_obj)
     return(.p2r_spec_tramoseats(rq))
 }
@@ -101,13 +131,17 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 .r2jd_spec_tramoseats <- function(spec) {
     pspec <- .r2p_spec_tramoseats(spec)
     nq <- RProtoBuf::serialize(pspec, NULL)
-    nspec <- .jcall("jdplus/tramoseats/base/r/TramoSeats", "Ljdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec;", "specOf", nq)
+    nspec <- .jcall(
+        "jdplus/tramoseats/base/r/TramoSeats",
+        "Ljdplus/tramoseats/base/api/tramoseats/TramoSeatsSpec;",
+        "specOf",
+        nq
+    )
     return(nspec)
 }
 
 
 ## P <-> R
-
 
 .p2r_spec_tramo <- function(pspec) {
     b <- pspec$basic
@@ -118,7 +152,10 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
     )
     t <- pspec$transform
     transform_list <- list(
-        fn = rjd3toolkit::.enum_extract(modelling.Transformation, t$transformation),
+        fn = rjd3toolkit::.enum_extract(
+            modelling.Transformation,
+            t$transformation
+        ),
         fct = t$fct,
         adjust = rjd3toolkit::.enum_extract(modelling.LengthOfPeriod, t$adjust),
         outliers = t$outliers_correction
@@ -158,7 +195,10 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
         users = unlist(ptd$users),
         w = ptd$w,
         test = rjd3toolkit::.enum_extract(tramoseats.TradingDaysTest, ptd$test),
-        auto = rjd3toolkit::.enum_extract(tramoseats.AutomaticTradingDays, ptd$auto),
+        auto = rjd3toolkit::.enum_extract(
+            tramoseats.AutomaticTradingDays,
+            ptd$auto
+        ),
         ptest = ptd$ptest,
         autoadjust = ptd$auto_adjust,
         tdcoefficients = rjd3toolkit::.p2r_parameters(ptd$tdcoefficients),
@@ -166,7 +206,9 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
     )
     easter <- list(
         type = rjd3toolkit::.enum_extract(tramoseats.EasterType, pee$type),
-        duration = pee$duration, julian = pee$julian, test = pee$test,
+        duration = pee$duration,
+        julian = pee$julian,
+        test = pee$test,
         coefficient = rjd3toolkit::.p2r_parameter(pee$coefficient)
     )
     # TODO: complete regression
@@ -181,7 +223,12 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
         ramps = rjd3toolkit::.p2r_ramps(r$ramps)
     )
     e <- pspec$estimate
-    estimate <- list(span = rjd3toolkit::.p2r_span(e$span), ml = e$ml, tol = e$tol, ubp = e$ubp)
+    estimate <- list(
+        span = rjd3toolkit::.p2r_span(e$span),
+        ml = e$ml,
+        tol = e$tol,
+        ubp = e$ubp
+    )
     return(structure(
         list(
             basic = basic,
@@ -200,16 +247,26 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 .r2p_spec_tramo <- function(rspec) {
     pspec <- tramoseats.TramoSpec$new()
     # BIAS
-    freq<--1
-    if (! is.null(rspec$basic$frequency)) freq<-rspec$basic$frequency
+    freq <- -1
+    if (!is.null(rspec$basic$frequency)) {
+        freq <- rspec$basic$frequency
+    }
     pspec$basic$span <- rjd3toolkit::.r2p_span(rspec$basic$span)
     pspec$basic$preliminary_check <- rspec$basic$preliminaryCheck
     pspec$basic$annual_frequency <- freq
 
     # TRANSFORM
-    pspec$transform$transformation <- rjd3toolkit::.enum_of(modelling.Transformation, rspec$transform$fn, "FN")
+    pspec$transform$transformation <- rjd3toolkit::.enum_of(
+        modelling.Transformation,
+        rspec$transform$fn,
+        "FN"
+    )
     pspec$transform$fct <- rspec$transform$fct
-    pspec$transform$adjust <- rspec$transform$adjust <- rjd3toolkit::.enum_of(modelling.LengthOfPeriod, rspec$transform$adjust, "LP")
+    pspec$transform$adjust <- rspec$transform$adjust <- rjd3toolkit::.enum_of(
+        modelling.LengthOfPeriod,
+        rspec$transform$adjust,
+        "LP"
+    )
     pspec$transform$outliers_correction <- rspec$transform$outliers
 
     # OUTLIER
@@ -243,30 +300,59 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 
     pspec$regression$mean <- rjd3toolkit::.r2p_parameter(rspec$regression$mean)
     pspec$regression$check_mean <- rspec$regression$check_mean
-    pspec$regression$outliers <- rjd3toolkit::.r2p_outliers(rspec$regression$outliers)
+    pspec$regression$outliers <- rjd3toolkit::.r2p_outliers(
+        rspec$regression$outliers
+    )
     pspec$regression$users <- rjd3toolkit::.r2p_uservars(rspec$regression$users)
-    pspec$regression$interventions <- rjd3toolkit::.r2p_ivs(rspec$regression$interventions)
+    pspec$regression$interventions <- rjd3toolkit::.r2p_ivs(
+        rspec$regression$interventions
+    )
     pspec$regression$ramps <- rjd3toolkit::.r2p_ramps(rspec$regression$ramps)
 
     # TD
-    pspec$regression$td$td <- rjd3toolkit::.enum_sof(modelling.TradingDays, rspec$regression$td$td)
-    pspec$regression$td$lp <- rjd3toolkit::.enum_of(modelling.LengthOfPeriod, rspec$regression$td$lp, "LP")
+    pspec$regression$td$td <- rjd3toolkit::.enum_sof(
+        modelling.TradingDays,
+        rspec$regression$td$td
+    )
+    pspec$regression$td$lp <- rjd3toolkit::.enum_of(
+        modelling.LengthOfPeriod,
+        rspec$regression$td$lp,
+        "LP"
+    )
     pspec$regression$td$holidays <- rspec$regression$td$holidays
     pspec$regression$td$users <- rspec$regression$td$users
     pspec$regression$td$w <- rspec$regression$td$w
-    pspec$regression$td$test <- rjd3toolkit::.enum_of(tramoseats.TradingDaysTest, rspec$regression$td$test, "TD")
-    pspec$regression$td$auto <- rjd3toolkit::.enum_of(tramoseats.AutomaticTradingDays, rspec$regression$td$auto, "TD")
+    pspec$regression$td$test <- rjd3toolkit::.enum_of(
+        tramoseats.TradingDaysTest,
+        rspec$regression$td$test,
+        "TD"
+    )
+    pspec$regression$td$auto <- rjd3toolkit::.enum_of(
+        tramoseats.AutomaticTradingDays,
+        rspec$regression$td$auto,
+        "TD"
+    )
     pspec$regression$td$auto_adjust <- rspec$regression$td$autoadjust
     pspec$regression$td$ptest <- rspec$regression$td$ptest
-    pspec$regression$td$tdcoefficients <- rjd3toolkit::.r2p_parameters(rspec$regression$td$tdcoefficients)
-    pspec$regression$td$lpcoefficient <- rjd3toolkit::.r2p_parameter(rspec$regression$td$lpcoefficient)
+    pspec$regression$td$tdcoefficients <- rjd3toolkit::.r2p_parameters(
+        rspec$regression$td$tdcoefficients
+    )
+    pspec$regression$td$lpcoefficient <- rjd3toolkit::.r2p_parameter(
+        rspec$regression$td$lpcoefficient
+    )
 
     # EASTER
-    pspec$regression$easter$type <- rjd3toolkit::.enum_of(tramoseats.EasterType, rspec$regression$easter$type, "EASTER")
+    pspec$regression$easter$type <- rjd3toolkit::.enum_of(
+        tramoseats.EasterType,
+        rspec$regression$easter$type,
+        "EASTER"
+    )
     pspec$regression$easter$duration <- rspec$regression$easter$duration
     pspec$regression$easter$julian <- rspec$regression$easter$julian
     pspec$regression$easter$test <- rspec$regression$easter$test
-    pspec$regression$easter$coefficient <- rjd3toolkit::.r2p_parameter(rspec$regression$easter$coefficient)
+    pspec$regression$easter$coefficient <- rjd3toolkit::.r2p_parameter(
+        rspec$regression$easter$coefficient
+    )
 
     # ESTIMATE
     pspec$estimate$span <- rjd3toolkit::.r2p_span(rspec$estimate$span)
@@ -280,24 +366,37 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
 # SEATS
 
 .p2r_spec_seats <- function(spec) {
-    return(structure(list(
-        xl = spec$xl_boundary,
-        approximation = rjd3toolkit::.enum_extract(tramoseats.SeatsApproximation, spec$approximation),
-        epsphi = spec$seastolerance,
-        rmod = spec$trend_boundary,
-        sbound = spec$seas_boundary,
-        sboundatpi = spec$seas_boundary_at_pi,
-        bias = spec$bias_correction,
-        nfcasts = spec$nfcasts,
-        nbcasts = spec$nbcasts,
-        algorithm = rjd3toolkit::.enum_extract(tramoseats.SeatsAlgorithm, spec$algorithm)
-    ), class = "JD3_SEATS_SPEC"))
+    return(structure(
+        list(
+            xl = spec$xl_boundary,
+            approximation = rjd3toolkit::.enum_extract(
+                tramoseats.SeatsApproximation,
+                spec$approximation
+            ),
+            epsphi = spec$seastolerance,
+            rmod = spec$trend_boundary,
+            sbound = spec$seas_boundary,
+            sboundatpi = spec$seas_boundary_at_pi,
+            bias = spec$bias_correction,
+            nfcasts = spec$nfcasts,
+            nbcasts = spec$nbcasts,
+            algorithm = rjd3toolkit::.enum_extract(
+                tramoseats.SeatsAlgorithm,
+                spec$algorithm
+            )
+        ),
+        class = "JD3_SEATS_SPEC"
+    ))
 }
 
 .r2p_spec_seats <- function(spec) {
     pspec <- tramoseats.DecompositionSpec$new()
     pspec$xl_boundary <- spec$xl
-    pspec$approximation <- rjd3toolkit::.enum_of(tramoseats.SeatsApproximation, spec$approximation, "SEATS")
+    pspec$approximation <- rjd3toolkit::.enum_of(
+        tramoseats.SeatsApproximation,
+        spec$approximation,
+        "SEATS"
+    )
     pspec$seastolerance <- spec$epsphi
     pspec$trend_boundary <- spec$rmod
     pspec$seas_boundary <- spec$sbound
@@ -305,16 +404,25 @@ tramoseats_spec <- function(name = c("rsafull", "rsa0", "rsa1", "rsa2", "rsa3", 
     pspec$bias_correction <- spec$bias
     pspec$nfcasts <- spec$nfcasts
     pspec$nbcasts <- spec$nbcasts
-    pspec$algorithm <- rjd3toolkit::.enum_of(tramoseats.SeatsAlgorithm, spec$algorithm, "SEATS")
+    pspec$algorithm <- rjd3toolkit::.enum_of(
+        tramoseats.SeatsAlgorithm,
+        spec$algorithm,
+        "SEATS"
+    )
     return(pspec)
 }
 
 .p2r_spec_tramoseats <- function(pspec) {
-    return(structure(list(
-        tramo = .p2r_spec_tramo(pspec$tramo),
-        seats = .p2r_spec_seats(pspec$seats),
-        benchmarking = rjd3toolkit::.p2r_spec_benchmarking(pspec$benchmarking)
-    ), class = "JD3_TRAMOSEATS_SPEC"))
+    return(structure(
+        list(
+            tramo = .p2r_spec_tramo(pspec$tramo),
+            seats = .p2r_spec_seats(pspec$seats),
+            benchmarking = rjd3toolkit::.p2r_spec_benchmarking(
+                pspec$benchmarking
+            )
+        ),
+        class = "JD3_TRAMOSEATS_SPEC"
+    ))
 }
 
 .r2p_spec_tramoseats <- function(r) {
