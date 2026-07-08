@@ -1,11 +1,16 @@
 #' @include utils.R
 NULL
 
+#' @importFrom rjd3jars check_java_version
+.onAttach <- function(libname, pkgname) {
+    # Check java version
+    rjd3jars::check_java_version(silent = FALSE, startup = TRUE)
+}
+
 #' @importFrom rjd3jars check_java_version reload_dictionaries
 #' @importFrom stats is.ts start
 #' @importFrom RProtoBuf read readProtoFiles2
 #' @importFrom rJava .jpackage .jcall .jnull is.jnull .jfield
-#'
 .onLoad <- function(libname, pkgname) {
     # Loading dependencies
     if (!requireNamespace("rjd3jars", quietly = TRUE)) {
@@ -32,6 +37,7 @@ NULL
         stop("Loading java packages failed")
     }
 
+    # If java >= 21, then reload dictionnaries
     has_java <- rjd3jars::check_java_version(silent = TRUE)
     if (has_java) {
         rjd3jars::reload_dictionaries()
