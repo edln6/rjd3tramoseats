@@ -36,7 +36,7 @@ a \code{mts} object with 7 variables:
 Forecasts with TRAMO
 }
 \examples{
-\dontshow{if (rjd3jars::check_java_version()) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
 }

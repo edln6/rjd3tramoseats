@@ -90,7 +90,7 @@ seasonal adjustment process.
 (Seats is an Arima Model Based decomposition algorithm working in conjunction with Tramo.)
 }
 \examples{
-\dontshow{if (rjd3jars::check_java_version()) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 init_spec <- tramoseats_spec("rsafull")
 new_spec <- set_seats(init_spec,
     approximation = "Legacy",
