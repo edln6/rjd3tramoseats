@@ -9,7 +9,7 @@ NULL
 #' @returns returns a "JD3_UCARIMA" object
 #'
 #'
-#' @examplesIf rjd3jars::check_java_version()
+#' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 #' @export
 seats_decompose <- function(sarima, seas.tolerance = 2, trend.boundary = 0.5, seas.boundary = 0.8,

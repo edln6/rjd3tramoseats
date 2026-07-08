@@ -21,7 +21,7 @@ NULL
 #' @returns a `"JD3_REGARIMA_OUTLIERS"` object.
 #' @importFrom rjd3toolkit td
 #'
-#' @examplesIf rjd3jars::check_java_version()
+#' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' tramo_outliers(rjd3toolkit::ABS$X0.2.09.10.M)
 #' @export
 tramo_outliers <- function(y, order = c(0L, 1L, 1L), seasonal = c(0L, 1L, 1L), mean = FALSE,
