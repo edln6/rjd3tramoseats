@@ -89,6 +89,11 @@ reference:
     - '`tramoseats_dictionary`'
     - '`tramoseats_full_dictionary`'
     - '`userdefined_variables_tramoseats`'
+- title: Option for rjdverse
+  desc: Evironment specific to JDemetra+
+  contents:
+    - '`get_tramoseats_option`'
+    - '`tramoseats_option`'
 - title: Wrangling Java objects
   desc: Functions to easily interact between R and Java objects
   contents:
