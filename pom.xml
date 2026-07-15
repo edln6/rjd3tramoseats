@@ -11,7 +11,7 @@
 	<description>Usage: mvn -Pcopy-jars</description>
 
 	<properties>
-		<jdplus-main.version>3.7.1</jdplus-main.version>
+		<jdplus-main.version>3.8.0</jdplus-main.version>
 	</properties>
 
 	<dependencies>
@@ -20,14 +20,6 @@
 			<artifactId>jdplus-tramoseats-base-r</artifactId>
 			<version>${jdplus-main.version}</version>
 			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>jdplus-toolkit-base-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>jdplus-toolkit-base-core</artifactId>
-				</exclusion>
 				<exclusion>
 					<groupId>*</groupId>
 					<artifactId>jdplus-toolkit-base-r</artifactId>

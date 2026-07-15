@@ -56,9 +56,11 @@
 #' @param bcasts,fcasts numeric: the number of backasts (`bcasts`) or forecasts
 #' (`fcasts`) used in the decomposition in periods (positive values) or years
 #' (negative values). Default `bcasts` = 0. Default `fcasts` = 0.
-#' @param bias TODO.
+#' @param bias boolean. If `TRUE` (default) and decomposition is multiplicative a correction is applied
+#' when computing final components (S, T, I) in level from components estimated in log. Average of S (on complete years)
+#' and I (on the whole series) is set to 1, the correction is allocated to T.
 #'
-#' @examplesIf rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version
+#' @examplesIf rjd3jars::check_java_version(silent = TRUE)
 #' init_spec <- tramoseats_spec("rsafull")
 #' new_spec <- set_seats(init_spec,
 #'     approximation = "Legacy",
@@ -83,31 +85,35 @@
 #'
 #' @export
 #'
-set_seats <- function(x,
-                      approximation = c(NA, "None", "Legacy", "Noisy"),
-                      trend.boundary = NA,
-                      seas.boundary = NA,
-                      seas.boundary.unique = NA,
-                      seas.tolerance = NA,
-                      ma.boundary = NA,
-                      fcasts = NA,
-                      bcasts = NA,
-                      algorithm = c(NA, "Burman", "KalmanSmoother"),
-                      bias = NA) {
+set_seats <- function(
+    x,
+    approximation = c(NA, "None", "Legacy", "Noisy"),
+    trend.boundary = NA,
+    seas.boundary = NA,
+    seas.boundary.unique = NA,
+    seas.tolerance = NA,
+    ma.boundary = NA,
+    fcasts = NA,
+    bcasts = NA,
+    algorithm = c(NA, "Burman", "KalmanSmoother"),
+    bias = NA
+) {
     UseMethod("set_seats", x)
 }
 #' @export
-set_seats.JD3_SEATS_SPEC <- function(x,
-                                     approximation = c(NA, "None", "Legacy", "Noisy"),
-                                     trend.boundary = NA,
-                                     seas.boundary = NA,
-                                     seas.boundary.unique = NA,
-                                     seas.tolerance = NA,
-                                     ma.boundary = NA,
-                                     fcasts = NA,
-                                     bcasts = NA,
-                                     algorithm = c(NA, "Burman", "KalmanSmoother"),
-                                     bias = NA) {
+set_seats.JD3_SEATS_SPEC <- function(
+    x,
+    approximation = c(NA, "None", "Legacy", "Noisy"),
+    trend.boundary = NA,
+    seas.boundary = NA,
+    seas.boundary.unique = NA,
+    seas.tolerance = NA,
+    ma.boundary = NA,
+    fcasts = NA,
+    bcasts = NA,
+    algorithm = c(NA, "Burman", "KalmanSmoother"),
+    bias = NA
+) {
     approximation <- match.arg(
         toupper(approximation[1]),
         c(NA, "NONE", "LEGACY", "NOISY")
@@ -137,7 +143,6 @@ set_seats.JD3_SEATS_SPEC <- function(x,
     if (!is.na(ma.boundary)) {
         x$xl <- ma.boundary
     }
-
 
     if (!is.na(bcasts)) {
         x$nbcasts <- bcasts

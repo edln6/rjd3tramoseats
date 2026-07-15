@@ -73,7 +73,9 @@ devtools::revdep()
 
 library("revdepcheck")
 # In another session because Rstudio interactive change your config:
-id <- rstudioapi::terminalExecute("Rscript -e 'revdepcheck::revdep_check(num_workers = 4)'")
+id <- rstudioapi::terminalExecute(
+    "Rscript -e 'revdepcheck::revdep_check(num_workers = 4)'"
+)
 rstudioapi::terminalKill(id)
 # if [Exit Code] is not 0, there is a problem !
 # to see the problem: execute the command in a new terminal manually.
@@ -81,7 +83,7 @@ rstudioapi::terminalKill(id)
 # See outputs now available in revdep/
 revdep_check()
 revdep_details(revdep = "pkg")
-revdep_summary()                 # table of results by package
+revdep_summary() # table of results by package
 revdep_report()
 # Clean up when on CRAN
 revdep_reset()

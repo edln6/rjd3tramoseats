@@ -61,7 +61,7 @@ returns a "JD3_UCARIMA" object
 SEATS Decomposition
 }
 \examples{
-\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 seats_decompose(rjd3toolkit::sarima_model(period = 12, phi = c(0, 1), bd = 1))
 \dontshow{\}) # examplesIf}
 }

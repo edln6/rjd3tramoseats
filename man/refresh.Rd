@@ -27,148 +27,187 @@ tramoseats_refresh(
 )
 }
 \arguments{
-\item{spec}{the current specification to be refreshed (\code{"result_spec"}).}
+\item{spec}{specification to be refreshed
+Object of class "JD3_tramoseats_SPEC" or "JD3_tramo_SPEC",
+can be obtained as an output of \code{tramoseats_spec} or \code{tramo_spec} and customised with \code{set_} functions,
+see \code{tramoseats_spec} documentation}
 
-\item{refspec}{the reference specification used to define the domain
-considered for re-estimation (\code{"domain_spec"}). By default this is the
-\code{"TRfull"} or \code{"RSAfull"} specification.}
+\item{refspec}{reference specification
+By default \code{"rsa4"} or \code{"tr5"} specification.
+Object of class "JD3_tramoseats_SPEC" or "JD3_tramo_SPEC",
+can be obtained as an output of \code{tramoseats_spec} or \code{tramo_spec} and customised with \code{set_} functions,
+see \code{tramoseats_spec} documentation}
 
-\item{policy}{the refresh policy to apply (see details).}
+\item{policy}{refresh policy to apply (see details)}
 
-\item{period, start, end}{additional parameters used to specify the span on
-which additive outliers (AO) are introduced when \code{policy = "Current"} or to
-specify the span on which outliers will be re-detected when
-\code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}, is this
-case \code{end} is unused.
-If \code{start} is not specified, outliers will be re-identified on the whole
-series.
+\item{period, start, end}{additional parameters used to specify the span
+when \code{policy = "Current"} or \code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}
+\code{period}: numeric, number of observations in a year (12, 4...), compulsory, if false or missing,
+re-estimation with refreshed specification won't work.
+When \code{policy = "Outliers"} or \code{policy = "Outliers_StochasticComponent"}
+\code{start} has to be specified as the date from which outliers will be re-identified
+\code{end} is not used, if specified it will be ignored.
+When \code{policy = "Current"}
+\code{start} and \code{end} have to be both specified and indicate the span on which
+additive outliers (AO) will be added.
 Span definition:
-\code{period}: numeric, number of observations in a year (12, 4...).
 \code{start} and \code{end}: defined as arrays of two elements: year and
-first period (for example, \code{period = 12} and \code{c(1980, 1)} stands for January
-1980) The dates corresponding \code{start} and \code{end} are included in the
-span definition.}
+first period (for example, \code{period = 12} and \code{start=c(1980, 1)} stands for January
+1980)}
 }
 \value{
-a new specification, an object of class \code{"JD3_TRAMOSEATS_SPEC"} or
-\code{"JD3_TRAMO_SPEC"}.
+a new specification, an object of class \code{"JD3_tramoseats_SPEC"} or
+\code{"JD3_tramo_SPEC"}.
 }
 \description{
-Functions \code{tramoseats_refresh()} and \code{tramo_refresh()} allow to create a new specification by updating a specification
-used for a previous estimation. Some selected parameters will be kept fixed
-(previous estimation results) while others will be freed for re-estimation in
-a domain of constraints. See details and examples.
+Functions \code{tramoseats_refresh} and \code{tramo_refresh} allow to create a new
+specification by updating an existing one.
+Some selected parameters will be kept fixed while others will be freed within the boundaries of a
+reference specification. In practice each freed parameter of the specification to be updated
+(\code{spec}) is replaced by the corresponding parameter of the reference specification (\code{refspec}).
+See details and examples.
 }
 \details{
-The selection of constraints to be kept fixed or re-estimated is called a
-revision policy. User-defined parameters are always copied to the new
-refreshed specifications. This revision applies to the estimation done in
-Tramo (pre-adjustment phase), Seats will then run a new decomposition which
-might be in some (rare) cases based on a different model.
+A particular selection of parameters to be kept fixed or re-estimated is called a
+revision policy.
 
 Available refresh policies are:
-
-\strong{Current}: applying the current pre-adjustment reg-arima model and
-handling the new raw data points, or any sub-span of the series as Additive
-Outliers (defined as new intervention variables)
-
-\strong{Fixed}: applying the current pre-adjustment reg-arima model and
-replacing forecasts by new raw data points.
-
-\strong{FixedParameters}: pre-adjustment reg-arima model is partially
+\enumerate{
+\item \strong{Current}: applying the current pre-adjustment reg-arima model
+and handling the new raw data points, or any sub-span of the series as
+Additive Outliers (defined as new intervention variables);
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{Fixed}: applying the current pre-adjustment reg-arima model
+and replacing forecasts by new raw data points;
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{FixedParameters}: pre-adjustment reg-arima model is partially
 modified: regression coefficients will be re-estimated but regression
-variables, Arima orders and coefficients are unchanged.
-
-\strong{FixedAutoRegressiveParameters}: same as FixedParameters but Arima
-Moving Average coefficients (MA) are also re-estimated, Auto-regressive (AR)
-coefficients are kept fixed.
-
-\strong{FreeParameters}: all regression and Arima model coefficients are
-re-estimated, regression variables and Arima orders are kept fixed.
-
-\strong{Outliers}: regression variables and Arima orders are kept fixed, but
-outliers will be re-detected on the defined span, thus all regression and
-Arima model coefficients are re-estimated
-
-\strong{Outliers_StochasticComponent}: same as "Outliers" but Arima model
-orders (p,d,q)(P,D,Q) can also be re-identified.
-
-\strong{Complete}: All the parameters are re-identified and re-estimated,
-unless constrained in the domain spec.
+variables, Arima orders and coefficients are unchanged;
+\item \strong{FixedAutoRegressiveParameters}: same as FixedParameters but
+Arima Moving Average coefficients (MA) are also re-estimated, Auto-regressive
+(AR) coefficients are kept fixed;
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{FreeParameters}: all regression and Arima model coefficients
+are re-estimated, regression variables and Arima orders are kept fixed;
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{Outliers}: regression variables and Arima orders are kept
+fixed, but outliers will be re-detected on the defined span, thus all
+regression and Arima model coefficients are re-estimated;
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{Outliers_StochasticComponent}: same as "Outliers" but Arima
+model orders (p,d,q)(P,D,Q) can also be re-identified;
+SEATS and Benchmarking part parameters are untouched.
+\item \strong{Complete}: All the parameters are re-identified and
+re-estimated, unless constrained in the domain spec.
+SEATS and Benchmarking part parameters are entirely reset to values in the reference spec.
+}
 }
 \examples{
-\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
-\donttest{
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
+library("rjd3toolkit")
 y <- rjd3toolkit::ABS$X0.2.08.10.M
 # raw series for first estimation
 y_raw <- window(y, end = c(2016, 12))
-# raw series for second (refreshed) estimation
+# raw series for second (refreshed) estimation: new data points
 y_new <- window(y, end = c(2017, 6))
-
-# specification for first estimation
-spec_tramoseats_1 <- tramoseats_spec("rsafull")
-
-# first estimation
-sa_tramoseats <- tramoseats(y_raw, spec_tramoseats_1)
-# refreshing the specification
-current_result_spec <- sa_tramoseats$result_spec
-current_domain_spec <- sa_tramoseats$estimation_spec
-
-# policy = "Fixed"
-spec_tramoseats_ref <- tramoseats_refresh(current_result_spec, # point spec to be refreshed
-    current_domain_spec, # domain spec (set of constraints)
-    policy = "Fixed"
+\donttest{
+# Example 1 : refresh mechanism
+# Create reference spec, here the default "rsa3"
+rsa3<- tramoseats_spec("rsa3")
+# Customize this spec
+## Tramo part
+### For example, disable automatic arima modelling
+user_spec <- set_automodel(rsa3, enabled = FALSE)
+### set a user-defined arima model
+user_spec <- set_arima(
+   user_spec,
+   mean = 0.2,
+   mean.type = "Fixed",
+   p = 1,
+   d = 2,
+   q = 0,
+   bp = 1,
+   bd = 1,
+   bq = 0,
+   coef = c(0.6, 0.7),
+   coef.type = c("Initial", "Fixed")
 )
+#print(user_spec)
 
+## Customize the x11 part
+user_spec<-set_seats(user_spec,
+                    fcasts = -2,
+                    bcasts = -1,
+                    trend.boundary=0.6,
+                    seas.boundary=0.75,
+                    algorithm= "KalmanSmoother")
+#print(user_spec)
+user_spec<- set_benchmarking(
+   user_spec,
+   enabled = TRUE,
+   target = "Original",
+   rho = 0.7,
+   lambda = 0.5,
+   forecast = TRUE,
+   bias = "Multiplicative")
+#print(user_spec)
+# Use policy: "Outliers_StochasticComponent"
+tramoseats_spec_ref <- tramoseats_refresh(spec= user_spec,
+                           refspec= rsa3,
+                           policy = "Outliers_StochasticComponent"
+)
+# print(tramoseats_spec_ref)
+# user defined reg-arima model is reset and outliers will be re-identified
+# on the whole series as no start and end specified, SEATS and Benchmarking parameters
+# are left unchanged
+# Use policy: "Complete"
+tramoseats_spec_ref <- tramoseats_refresh(spec= user_spec,
+                           refspec= rsa3,
+                           policy = "Complete"
+)
+# print(tramoseats_spec_ref)
+# all user defined parameters are reset and replaced with "rsa3" parameters,
+# Example 2 : practical re-estimation use-case
+sa_tramoseats <- tramoseats(y_raw, user_spec)
+# refreshing the specification resulting from the first estimation
+# to partially adapt to new data
+spec_to_refresh <- sa_tramoseats$result_spec
+reference_spec <- sa_tramoseats$estimation_spec
+# policy = "Fixed"
+spec_tramoseats_ref <- tramoseats_refresh(spec_to_refresh,
+                            reference_spec,
+                            policy = "Fixed"
+)
 # 2nd estimation with refreshed specification
 sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 # policy = "Outliers"
-spec_tramoseats_ref <- tramoseats_refresh(current_result_spec,
-    current_domain_spec,
-    policy = "Outliers",
-    period = 12,
-    start = c(2017, 1)
-) # outliers will be re-detected from January 2017 included
+spec_tramoseats_ref <- tramoseats_refresh(spec_to_refresh,
+                           reference_spec,
+                           policy = "Outliers",
+                           period = 12,
+                           start = c(2017, 1)
+)
+# outliers will be re-detected from January 2017 included
 # 2nd estimation with refreshed specification
 sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 
 # policy = "Current"
-spec_tramoseats_ref <- tramoseats_refresh(current_result_spec,
-    current_domain_spec,
-    policy = "Current",
-    period = 12,
-    start = c(2017, 1),
-    end = end(y_new)
+
+spec_tramoseats_ref <- tramoseats_refresh(spec_to_refresh,
+                           reference_spec,
+                           policy = "Current",
+                           period = 12,
+                           start = c(2017, 1),
+                           end = end(y_new)
 )
-# points from January 2017 (included) until the end of the series will be treated
-# as Additive Outliers, the previous reg-Arima model being otherwise kept fixed
-
-# 2nd estimation with refreshed specification
-sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref) #'
-# same procedure using tramo_refresh
-# specification for first estimation
-spec_1 <- tramo_spec("tr3")
-
-# first estimation
-tramo_model <- tramo(y_raw, spec_1)
-tramo_model$estimation_spec
-
-# refreshing the specification
-current_result_spec <- tramo_model$result_spec
-current_domain_spec <- tramo_model$estimation_spec
-
-# policy = "Fixed"
-spec_1_ref <- tramo_refresh(current_result_spec, # point spec to be refreshed
-                             current_domain_spec, # domain spec (set of constraints)
-                              policy = "Fixed"
-                               )
-
-# 2nd estimation with refreshed specification
-tramo_model_ref <- tramo(y_new, spec_1_ref)
+sa_tramoseats_ref <- tramoseats(y_new, spec_tramoseats_ref)
 }
+# Points from January 2017 (included) until the end of the series will be
+# treated as Additive Outliers, the previous reg-Arima model being otherwise
+# kept fixed 2nd estimation with refreshed specification
 \dontshow{\}) # examplesIf}
 }
 \references{
-More information on revision policies in JDemetra+ online documentation:
-\url{https://jdemetra-new-documentation.netlify.app/a-rev-policies}
+More information on revision policies in JDemetra+ documentation:
+\url{https://doc.jdemetra.org/a-rev-policies}
 }

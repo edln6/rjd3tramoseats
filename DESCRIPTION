@@ -1,12 +1,12 @@
 Type: Package
 Package: rjd3tramoseats
 Title: Seasonal Adjustment with TRAMO-SEATS in 'JDemetra+' 3.x
-Version: 3.7.1
+Version: 3.8.0
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Alain", "Quartier-la-Tente", , "alain.quartier@yahoo.fr", role = "aut",
            comment = c(ORCID = "0000-0001-7890-3857")),
-    person("Tanguy", "Barthelemy", , "tanguy.barthelemy@insee.fr", role = c("aut", "cre", "art")),
+    person("Tanguy", "Barthelemy", , "timeserieswithjdemetraandr@gmail.com", role = c("aut", "cre", "art")),
     person("Anna", "Smyk", , "anna.smyk@insee.fr", role = "aut")
   )
 Description: Interface to 'JDemetra+' 3.x (<https://github.com/jdemetra>)
@@ -23,14 +23,13 @@ Depends:
     R (>= 4.1.0)
 Imports:
     rJava (>= 1.0-6),
-    rjd3toolkit (>= 3.7.1),
-    RProtoBuf (>= 0.4.20),
+    RProtoBuf (>= 0.4.25),
     stats,
-    utils
+    utils,
+    rjd3jars (>= 0.0.5),
+    rjd3toolkit (>= 3.8.0)
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
-SystemRequirements: Java (>= 17)
+SystemRequirements: Java (>= 21)
 Collate: 
     'deprecated.R'
     'print.R'
@@ -38,6 +37,7 @@ Collate:
     'tramoseats_rslts.R'
     'tramoseats_spec.R'
     'revisions.R'
+    'rjd3tramoseats-package.R'
     'seats.R'
     'seats_spec.R'
     'tramo_generic.R'
@@ -48,3 +48,5 @@ Collate:
 Suggests: 
     spelling
 Language: en-US
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0

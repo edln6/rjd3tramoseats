@@ -44,13 +44,13 @@ estimation specification and the result specification, while
 \code{tramoseats_fast()} is a faster function that only returns the results.
 The \code{.jtramoseats()} functions only results the java object to custom outputs
 in other packages (use \code{\link[rjd3toolkit:dictionary]{rjd3toolkit::dictionary()}} to get the list of
-variables and \code{\link[rjd3toolkit:dictionary]{rjd3toolkit::result()}} to get a specific variable).
+variables and \code{\link[rjd3toolkit:result]{rjd3toolkit::result()}} to get a specific variable).
 }
 \description{
 Seasonal Adjustment with  TRAMO-SEATS
 }
 \examples{
-\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
 
 sp <- tramoseats_spec("rsafull")

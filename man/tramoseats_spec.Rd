@@ -35,13 +35,13 @@ RSA0/TR0 |\tab \emph{NA} |\tab \emph{NA} |\tab \emph{NA} |\tab Airline(+mean)\cr
 RSA1/TR1 |\tab automatic |\tab AO/LS/TC |\tab \emph{NA} |\tab Airline(+mean)\cr
 RSA2/TR2 |\tab automatic |\tab AO/LS/TC |\tab 2 td vars + Easter |\tab Airline(+mean)\cr
 RSA3/TR3 |\tab automatic |\tab AO/LS/TC |\tab \emph{NA} |\tab automatic\cr
-RSA4/TR3 |\tab automatic |\tab AO/LS/TC |\tab 2 td vars + Easter |\tab automatic\cr
+RSA4/TR4 |\tab automatic |\tab AO/LS/TC |\tab 2 td vars + Easter |\tab automatic\cr
 RSA5/TR5 |\tab automatic |\tab AO/LS/TC |\tab 7 td vars + Easter |\tab automatic\cr
 RSAfull/TRfull |\tab automatic |\tab AO/LS/TC |\tab automatic |\tab automatic
 }
 }
 \examples{
-\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 init_spec <- tramoseats_spec()
 init_spec <- tramo_spec()
 init_spec <- tramoseats_spec("rsa3")
@@ -55,8 +55,8 @@ init_spec <- tramo_spec("tr3")
 \code{\link[rjd3toolkit:set_basic]{rjd3toolkit::set_basic()}}, \code{\link[rjd3toolkit:set_easter]{rjd3toolkit::set_easter()}},
 \code{\link[rjd3toolkit:set_estimate]{rjd3toolkit::set_estimate()}}, \code{\link[rjd3toolkit:set_outlier]{rjd3toolkit::set_outlier()}},
 \code{\link[rjd3toolkit:set_tradingdays]{rjd3toolkit::set_tradingdays()}}, \code{\link[rjd3toolkit:set_transform]{rjd3toolkit::set_transform()}},
-\code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::add_outlier()}}, \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::remove_outlier()}},
-\code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::add_ramp()}}, \code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::remove_ramp()}},
+\code{\link[rjd3toolkit:add_outlier]{rjd3toolkit::add_outlier()}}, \code{\link[rjd3toolkit:remove_outlier]{rjd3toolkit::remove_outlier()}},
+\code{\link[rjd3toolkit:add_ramp]{rjd3toolkit::add_ramp()}}, \code{\link[rjd3toolkit:remove_ramp]{rjd3toolkit::remove_ramp()}},
 \code{\link[rjd3toolkit:add_usrdefvar]{rjd3toolkit::add_usrdefvar()}};
 \item To set the decomposition parameters: \code{\link[=set_seats]{set_seats()}};
 \item To set the benchmarking parameters: \code{\link[rjd3toolkit:set_benchmarking]{rjd3toolkit::set_benchmarking()}}.
