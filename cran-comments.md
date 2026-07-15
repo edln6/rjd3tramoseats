@@ -1,3 +1,16 @@
+## Submission of {rjd3tramoseats} v3.8.0 - 2026-07-09
+
+### R CMD check results
+
+* checked on windows, mac, ubuntu (with GitHub actions)
+* checked on CRAN [win-builder](https://win-builder.r-project.org/)
+
+0 errors | 0 warnings | 1 note
+
+### Changes
+
+* Maintainer email adress has changed
+
 
 ## Submission of {rjd3tramoseats} v3.7.1 - 2026-03-11
 

@@ -50,7 +50,7 @@ variables and \code{\link[rjd3toolkit:result]{rjd3toolkit::result()}} to get a s
 Seasonal Adjustment with  TRAMO-SEATS
 }
 \examples{
-\dontshow{if (rjd3jars::check_java_version()) withAutoprint(\{ # examplesIf}
+\dontshow{if (rjd3jars::check_java_version(silent = TRUE)) withAutoprint(\{ # examplesIf}
 library("rjd3toolkit")
 
 sp <- tramoseats_spec("rsafull")

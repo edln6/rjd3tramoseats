@@ -1,6 +1,10 @@
 #' @importFrom stats coef df.residual logLik residuals vcov nobs
 #' @export
-coef.JD3_TRAMO_OUTPUT <- function(object, component = c("regression", "arima", "both"), ...) {
+coef.JD3_TRAMO_OUTPUT <- function(
+    object,
+    component = c("regression", "arima", "both"),
+    ...
+) {
     coef(object$result, component = component, ...)
 }
 #' @export
@@ -30,7 +34,11 @@ summary.JD3_TRAMO_OUTPUT <- function(object, ...) {
     x
 }
 #' @export
-print.JD3_TRAMO_OUTPUT <- function(x, summary_info = getOption("summary_info"), ...) {
+print.JD3_TRAMO_OUTPUT <- function(
+    x,
+    summary_info = getOption("summary_info"),
+    ...
+) {
     cat("Method: TRAMO\n")
     print(x$result, summary_info = summary_info, ...)
 }
@@ -40,7 +48,11 @@ diagnostics.JD3_TRAMO_OUTPUT <- function(x, ...) {
 }
 
 #' @export
-coef.JD3_TRAMOSEATS_OUTPUT <- function(object, component = c("regression", "arima", "both"), ...) {
+coef.JD3_TRAMOSEATS_OUTPUT <- function(
+    object,
+    component = c("regression", "arima", "both"),
+    ...
+) {
     coef(object$result$preprocessing, component = component, ...)
 }
 #' @export
