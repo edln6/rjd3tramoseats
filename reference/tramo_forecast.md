@@ -51,8 +51,6 @@ a `mts` object with 7 variables:
 
 ``` r
 if (FALSE) { # rjd3jars::check_java_version(silent = TRUE)
-# \donttest{
 tramo_forecast(rjd3toolkit::ABS$X0.2.09.10.M)
-# }
 }
 ```
